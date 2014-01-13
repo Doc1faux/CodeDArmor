@@ -58,8 +58,40 @@ ul li a{
 #CobaltContainer{
     text-align: center;
     height: 100%; 
-    background: rgb(80,80,80);   
+    background: rgba(0, 0, 0,0.3); ;   
 }
+
+#CobaltDetailedEventHeader{
+    
+    
+    
+}
+
+#CobaltDetailedEventHeader img{
+    
+    float:left;
+    height: 120px;
+    width: 120px;
+    
+    
+}
+
+#CobaltDetailedEventHeader h2{
+    
+    float:left;
+    height: 120px;
+    width: 120px;
+    
+    
+}
+
+#CobaltDetailedEventRegister{
+    font-size: 20px;
+    float: right;
+    
+}
+
+
 
 .eventBlock{
      
