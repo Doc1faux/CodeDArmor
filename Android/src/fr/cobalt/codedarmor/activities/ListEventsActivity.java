@@ -1,19 +1,19 @@
-package fr.cobalt.codedarmor;
+package fr.cobalt.codedarmor.activities;
 
 
+import fr.cobalt.codedarmor.fragments.ListEventsFragments;
 import fr.haploid.androidnativebridge.activities.HTMLActivity;
 import fr.haploid.androidnativebridge.fragments.HTMLFragment;
-import fragments.HomeFragment;
 
 
-public class HomeActivity extends HTMLActivity {
+public class ListEventsActivity extends HTMLActivity {
 
 
 
 	
 	protected HTMLFragment getFragment(){
 		
-		return new HomeFragment();
+		return new ListEventsFragments();
 		
 		
 		

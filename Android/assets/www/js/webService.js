@@ -24,7 +24,11 @@ var infoGplus ={
     'coverUrl':null,
     'avatarUrl':null
 }
+
 var events =[
+    
+]
+var videos=[
     
 ]
 function processInfoGplus(data){
@@ -47,7 +51,7 @@ function getInfoGplus(){
             
         },
         error:function(){
-            console.log("Fail to contact server at adress : "+url);
+            console.log("Fail to contact server at adress : "+settings.url);
         }
         
         
@@ -55,6 +59,40 @@ function getInfoGplus(){
     }
     
     $.ajax(settings);
+    
+}
+
+function getVideos(callback){
+    
+    var settings={
+        url:"http://gdata.youtube.com/feeds/users/UC3MIXkWlQAvzQLa3ALbSqhg/uploads?alt=json-in-script",
+        type : 'GET',
+        dataType:'jsonp',
+        success:function(data){
+            var entry=[];
+            entry =data.feed.entry;
+            var i;
+          for(i=0; i<entry.length; ++i){ 
+                
+                videos.push(video={
+                    id:i,
+                    title: entry[i].title.$t,
+                    thumbnail: entry[i].media$group.media$thumbnail[0].url,
+                    link:entry[i].link[0].href
+                });
+            
+          }
+          console.log(videos);
+          callback();
+        },      
+        error:function(data){
+                
+            nativeBridge.log("fail : "+data);
+            
+        }
+    }
+    $.ajax(settings);
+    
     
 }
 
@@ -67,10 +105,9 @@ function getEvents(callback){
         success:function(data){
             events=data;
             callback();
-            console.log(events);
         },
         error:function(data){
-            console.log("Fail to contact server at adress : "+url);
+            console.log("Fail to contact server at adress : "+settings.url);
         }
         
         
@@ -99,8 +136,8 @@ function getPhotos(setId){
         },
         error:function(data){
             
-                alert("wrong structure : ");
-                console.log(data);
+            nativeBridge.alert("wrong structure : ");
+            console.log(data);
             
         }
         
@@ -117,27 +154,4 @@ function jsonFlickrApi(data){
     console.log(data);
 }
 
-function getVideos(){
-    
-    var settings={
-        url:"http://gdata.youtube.com/feeds/users/UC3MIXkWlQAvzQLa3ALbSqhg/uploads?alt=json-in-script",
-        type : 'GET',
-        dataType:'jsonp',
-        success:function(data){
-            console.log(data);
-        },
-        error:function(data){
-                
-                console.log("fail : "+data);
-            
-        }
-        
-       
-        
-    }
-    
-    
-    
-    $.ajax(settings);
-    
-}
+

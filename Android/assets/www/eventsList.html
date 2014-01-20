@@ -10,75 +10,77 @@
     <body>
         <script type="text/javascript" src="js/webService.js"></script>
         <script type="text/javascript" src="js/zepto.js"></script>
+        <script type="text/javascript" src="js/utils.storage.js"></script>
         <script type="text/javascript" src="js/nativeBridge/nativeBridge.js"></script>
         <script type="text/javascript" src="handlebars.min.js"></script>
         <script id="tpl_listEvents" type="text/x-handlebars-template">
+            <ul>
             {{#events}}
-               
-            <div class="eventBlock" index={{@index}} ><img src="img/icon_gdg.png" alt="IMG not found"> <div><h2>{{title}}</h2><p>{{description}}</p></div></div>
-   
+            
+            <li style="style="height: 1px;width: 2px;" class="eventBlock" index={{@index}} ><img src="img/icon_gdg.png" alt="IMG not found"><div class="shadow"></div><div><h2>{{title}}</h2><p>{{description}}</p></div></li>
+                    
             {{/events}}
+            </ul>
+            
+            
         </script>
-		
         
-            
         
-            
+                    
+                    
+                    
+                    
+<!--        <a href="sideMenu.html">side</a>           -->
         <div id="eventList">  
-           </div> 
-            
-
- 
-            <script>getInfoGplus();
-                   
-                    getPhotos(photoConfig.photoset_id);
-                    getVideos();
-                    var srcTpl=$("#tpl_listEvents").html();
-                            var tpl=Handlebars.compile(srcTpl);
-                            getEvents(function(){
-                                                    console.log(events);                          
-                                                    console.log(tpl);
-                              var html=tpl({events : events});  
-                              $("#eventList").append(html);
-                            });
-                        
-            </script>
-        
+        </div> 
+                    
+                    
+                    
         <script>
-            Zepto(function($){
-                
-                
-                
-                nativeBridge.init({                    	
-                    events:{
-                        "pullToRefreshRefresh" : function(event){
-                            nativeBridge.log('Refresh');                           
-                            nativeBridge.sendCallback(event);
-                            var hellos=new Array("Hello !","Refreshing !","Great !","Fast !", ";-)");
-                            var elemlength = hellos.length;
-                            var randomnum = Math.floor(Math.random()*elemlength);
-                            var randomitem = hellos[randomnum];
-                            var srcTpl=$("#tpl_listEvents").html();
-                            var tpl=Handlebars.compile(srcTpl);
-                            getEvents(function(){
-                              tpl({events : events});  
-                            });
-                            
-                            $('p').html(randomitem);
-                            
-                        }
-                    }
-                });
-                
-                
-            });
-            
-            
+                    //getInfoGplus();
+                    
+                    
+                    var srcTpl=$("#tpl_listEvents").html();
+                    var tpl=Handlebars.compile(srcTpl);
+                    getEvents(function(){  
+                        var html=tpl({events : events});  
+                        $("#eventList").append(html);
+                        $('div.eventBlock').on('tap click',function(){
+                            var index=$(this).attr("index");
+                            utils.storage.setItem('indexEvent',index);
+                            nativeBridge.log(index);
+                            nativeBridge.navigate('push','detailedEvents.html','detaileView');
+                            return false;
+                        });
+                    });
+                    
         </script>
-        
-            
-            
-            
-            
+                    
+        <script>
+                    Zepto(function($){
+                                           
+                        nativeBridge.init({                    	
+                            debug:true     
+                            ,events:{
+                                
+                                "pullToRefreshRefresh" : function(event){
+                                    nativeBridge.log('Refresh');                           
+                                    nativeBridge.sendCallback(event);
+                                    
+                                }
+                            }
+                        });
+                        
+                        
+                        
+                    });
+                    
+                    
+        </script>
+                    
+                    
+                    
+                    
+                    
     </body>
 </html>

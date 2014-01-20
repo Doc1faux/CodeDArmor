@@ -4,7 +4,7 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : 3 déc. 2013, 16:36:27
+    Created on : 16 janv. 2014, 14:05:55
     Author     : juliengambier
 */
 
@@ -12,77 +12,8 @@ and open the template in the editor.
     margin: 0;
     padding: 0;
 }
-
-body{
-    text-align: center;
-    height: 100%; 
-    
-}
-
-
-ul li{
-    display:inline-block;
-    margin: 0;
-    padding: 0;
-    
-}
-
-ul{
-  background: #e5e8e3;  
-  margin: 0;
-    padding: 0;
-}
-
-#CobaltContainer{
-    text-align: center;
-    height: 100%; 
-    background: #e5e8e3;   
-}
-
-#CobaltDetailedEventHeader{
-    
-    
-    
-}
-
-#CobaltDetailedEventHeader img{
-    
-    float:left;
-    height: 120px;
-    width: 120px;
-    
-    
-}
-
-#CobaltDetailedEventHeader h2{
-    
-    float:left;
-    height: 120px;
-    width: 120px;
-    
-    
-}
-
-#CobaltDetailedEventRegister{
-    font-size: 20px;
-    float: right;
-    
-}
-
-.eventBlock{
-     
-     border-width: 2px;
-     margin-left: auto;
-     margin-right: auto;  
-     margin-top:10px;
-     max-width: 400px;
-     background:white;
-     height: 200px;
-     position:relative;
-    
-}
 @media screen and (max-width: 2000px) {
-.eventBlock{  
+.videoBlock{  
      max-width: 400px;   
      height: 200px;  
 }
@@ -169,62 +100,4 @@ ul li:nth-child(even){
 }
 
 }
-
-
-.eventBlock img{
-    
-    float:left;
-    height: 100%;
-    width: 50%;
-    
-    
-    
-    
-}
-
-.eventBlock div{
-    
-    padding: 5px;
-    height: 90%;;
-   
-    overflow: hidden;
-    text-align: left;
-    
-    
-}
-
-.eventBlock div h2{
-    color: #555555;
-    font-size: 15px;
-    
-    
-    
-    
-}
-
-.eventBlock div p{
-    color: #555555;
-    margin-top: 10px;
-    height: 100%;
-    overflow: hidden;
-/*    word-wrap: break-word;  */
-    font-size: 12px;
-    margin-bottom: 0;
-    
-    
-    
-    
-    
-}
-
-
-#eventList{
-    margin-right: auto;
-    margin-left: auto;
-    
-    width:98%;
-  
-    
-}
-
 
