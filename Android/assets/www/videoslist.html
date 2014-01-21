@@ -9,6 +9,7 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="css/videoslist.css"/>
     </head>
     <body>
         <script type="text/javascript" src="js/webService.js"></script>
@@ -19,33 +20,23 @@ and open the template in the editor.
         <script id="tpl_videosList" type="text/x-handlebars-template">
         <ul>
             {{#videos}}
-            
-                    <li class="eventBlock" index={{@index}} ><img src={{thumbnail}} alt="IMG not found"> <div><h2>{{title}}</h2><p>{{link}}</p></div></li>
-                    
+            <li class="videoBlock" link={{link}}><div class="thumbnail" style="background-image:url({{thumbnail}})"><div class="shadow"><h2 class="title">{{title}}</h2><p class="play" data-icon="&#xe108;"></p></div></li> 
             {{/videos}}
         </ul>
         
         </script>
+        
         <div id="videosList">  
         </div> 
         
         <script>
-                    //getInfoGplus();
-                    
-                    
-                    
+
                     var srcTpl=$("#tpl_videosList").html();
                     var tpl=Handlebars.compile(srcTpl);
                     getVideos(function(){  
                         var html=tpl({videos : videos});  
                         $("#videosList").append(html);
-//                        $('div.eventBlock').on('tap click',function(){
-//                            var index=$(this).attr("index");
-//                            utils.storage.setItem('indexEvent',index);
-//                            nativeBridge.log(index);
-//                            nativeBridge.navigate('push','detailedEvents.html','detaileView');
-//                            return false;
-//                        });
+
                     });
                     
         </script>
