@@ -7,43 +7,108 @@ and open the template in the editor.
 <html>
     <head>
         <title>TODO supply a title</title>
-        <link rel="stylesheet" href="css/style.css"/>
+        <link rel="stylesheet" href="css/detailedView.css"/>
         
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
     </head>
     
-    <body>
+    <body  >
         
         <script type="text/javascript" src="js/webService.js"></script>
+        <script type="text/javascript" src="js/utils.storage.js"></script>
         <script type="text/javascript" src="js/zepto.js"></script>
         <script type="text/javascript" src="js/nativeBridge/nativeBridge.js"></script>
         <script type="text/javascript" src="handlebars.min.js"></script>
        <script id="tpl_detailedEvent" type="text/x-handlebars-template">
-            {{#event}}
-            
-                    <div class="eventBlock" index={{@index}} ><img src="img/icon_gdg.png" alt="IMG not found"> <div><h2>{{title}}</h2><p>{{description}}</p></div></div>
-                    <div id="CobaltContainer">
-                    <div id="CobaltDetailedEventHeader">
-                    <img src="img/icon_gdg.png" alt="GDG_image"/>
-                    </div>    
-                    <h2></h2>   
+     
+    
+    
+    {{#event}}  
+    <div id="imageBackground" style="background-image:url(img/event.png)"></div>
+    <div id="DetailedViewContainer">
+    
+    <div id="CobaltDetailedEventHeader">
+                    
+            <img src="img/icon_gdg.png" alt="GDG_image"/>
+            <div id="headerTitles">
+                <h2>{{title}}</h2> 
+                <br>
+                {{#if isOver}}          
+                <h3   id="CobaltDetailedEventRegister">L'évènement est déja passé </h3>
+                
+                {{else}}          
+                <h3   id="CobaltDetailedEventRegister">"Inscrivez vous"</h3>
+                
+                {{/if}}            
+                        
+            </div>
+                        
+            <div style="clear:both;"></div>           
+                        
+        </div>    
+        <div id="ContentContainer">
+            <p>
+                {{description}}
+            </p>
+                        
         </div>
+    
+    
+    
+                      
+         </div>           
+                      
             {{/event}}
         </script>
-        
+  
+          
+<!--        <div id="detail"></div>-->
+
+
             
             
             
-             <script>
+<script>
+            
+            
+            
+            
+            
             Zepto(function($){
                 
+                
+                utils.storage.enable();
+                var eventsList=utils.storage.getItem('jsonEvents','json');
+                var index= utils.storage.getItem('eventIndex','int');
+                console.log(eventsList[index].temporalRelation);
+                currentEvent=eventsList[index];
+                
+                if(currentEvent.temporalRelation==="past"){
+                    currentEvent.isOver=true;
+                }else{
+                    currentEvent.isOver=false;
+                }
+                nativeBridge.log("index"+index);
+                
+                var srcTpl=$("#tpl_detailedEvent").html();
+                var tpl=Handlebars.compile(srcTpl);
+                currentEvent.description=escapeHTML(currentEvent.description);
+                
+                var html=tpl({event : currentEvent});  
+                                 
+
+                $("body").append(html);
+               // utils.storage.removeItem('jsonEvents');
+               // utils.storage.removeItem('eventIndex');
             });
             
+           function escapeHTML(text){
+			return new Handlebars.SafeString(Handlebars.compile("{{& text}}")({text:text}).replace(/\r?\n/g, "<br/>"));
+		}
+</script>
             
-        </script>
-            
-    
-    
     </body>
+    
+    
 </html>

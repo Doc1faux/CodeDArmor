@@ -154,4 +154,9 @@ function jsonFlickrApi(data){
     console.log(data);
 }
 
+function buildEventBriteUrl(){
+    
+    
+}
+
 

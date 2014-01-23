@@ -1,0 +1,144 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 22 janv. 2014, 12:37:42
+    Author     : juliengambier
+*/
+
+
+@font-face {
+    font-family: 'RobotoCondensedBold';
+    src: local('Roboto Condensed Bold'), local('RobotoCondensed-Bold'), url('fonts/RobotoCondensedBold.woff') format('woff'), url("fonts/RobotoCondensedBold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'RobotoRegular';
+    src: local('Roboto Regular'), local('Roboto-Regular'), url('fonts/RobotoRegular.woff') format('woff'), url("fonts/RobotoRegular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'RobotoLight';
+    src: local('Roboto Light'), local('Roboto-Light'), url('fonts/RobotoLight.woff') format('woff'), url("fonts/RobotoLight.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+html{
+    height: 100%;
+}
+
+body{
+    background: #000;
+    
+    height: 100%;
+    
+
+   
+}
+
+#imageBackground{
+    
+    position:fixed;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    top:0; bottom:0; left:0; right:0; 
+    opacity: 0.15;
+}
+
+#CobaltDetailedEventHeader{
+    
+    line-height:20px;
+    width: 100%;
+    height: auto;
+    /*background: green;*/
+    
+    
+}
+
+#headerTitles{
+    height: 80%; 
+    float: left;
+    width:60%;
+    /*margin-left: 10px;*/
+    margin-top: 15px;
+    /*background: red;*/
+    
+}
+
+#CobaltDetailedEventHeader img{
+    /*padding: 10px;*/
+    float:left;
+    padding: 10px; 
+    width: 30%;
+    max-width: 180px;
+    
+    
+    
+}
+#DetailedViewContainer{
+    position: relative;
+    z-index: 1;
+    padding: 0;
+    margin: 0;
+    
+}
+
+#CobaltDetailedEventHeader h2{  
+    
+    color: white;
+    font-family:'RobotoRegular';
+    font-size: 20px;  
+}
+#CobaltDetailedEventHeader h3{  
+    
+    color: rgba(70,0,200,0.9);
+    font-family:'RobotoCondensedBold';
+    font-size: 20px;  
+}
+
+#CobaltDetailedEventRegister{
+    font-size: 30px;
+    float:left;
+    
+}
+#ContentContainer{
+    padding: 20px;
+   
+}
+
+#ContentContainer img{
+    width:100%;
+   
+}
+#ContentContainer p{
+    color: white;
+    font-size: 20px;
+    font-family:'RobotoRegular';
+    /*background: blue;*/
+    width:100%;
+    height: 100%;
+   
+}
+
+@media screen and (max-width: 400px) {
+#ContentContainer p{
+  font-size: 15px;  
+    
+}
+    
+    #ContentContainer{
+    padding: 10px; 
+}
+
+
+}
+

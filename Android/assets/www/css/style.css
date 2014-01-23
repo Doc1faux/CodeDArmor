@@ -8,6 +8,24 @@ and open the template in the editor.
     Author     : juliengambier
 */
 
+@font-face {
+    font-family: 'RobotoCondensedBold';
+    src: local('Roboto Condensed Bold'), local('RobotoCondensed-Bold'), url('fonts/RobotoCondensedBold.woff') format('woff'), url("fonts/RobotoCondensedBold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'RobotoRegular';
+    src: local('Roboto Regular'), local('Roboto-Regular'), url('fonts/RobotoRegular.woff') format('woff'), url("fonts/RobotoRegular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'RobotoLight';
+    src: local('Roboto Light'), local('Roboto-Light'), url('fonts/RobotoLight.woff') format('woff'), url("fonts/RobotoLight.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+}
 * {
     margin: 0;
     padding: 0;
@@ -39,35 +57,7 @@ ul{
     background: #e5e8e3;   
 }
 
-#CobaltDetailedEventHeader{
-    
-    
-    
-}
 
-#CobaltDetailedEventHeader img{
-    
-    float:left;
-    height: 120px;
-    width: 120px;
-    
-    
-}
-
-#CobaltDetailedEventHeader h2{
-    
-    float:left;
-    height: 120px;
-    width: 120px;
-    
-    
-}
-
-#CobaltDetailedEventRegister{
-    font-size: 20px;
-    float: right;
-    
-}
 
 .eventBlock{
      
@@ -153,15 +143,12 @@ ul li:nth-child(even){
 }
 
 
-.eventBlock img{
+.imgDesc{
     
     float:left;
     height: 100%;
     width: 50%;
-    
-    
-    
-    
+        
 }
 
 .eventBlock div{
@@ -177,8 +164,12 @@ ul li:nth-child(even){
 
 .eventBlock div h2{
     color: #555555;
+    font-family: "RobotoLight";
     font-size: 15px;
-    
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 20px;         
     
     
     
@@ -186,17 +177,22 @@ ul li:nth-child(even){
 
 .eventBlock div p{
     color: #555555;
+    font-family: "RobotoLight";
     margin-top: 10px;
-    height: 100%;
     overflow: hidden;
+    line-height:15px   ;    
 /*    word-wrap: break-word;  */
     font-size: 12px;
     margin-bottom: 0;
-    
-    
-    
-    
-    
+ 
+}
+
+.eventBlock div img{
+    position:absolute;
+    width:20px;   
+    top: 0;
+    right: 0;
+ 
 }
 
 
