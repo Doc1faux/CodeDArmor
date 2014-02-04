@@ -1,9 +1,15 @@
 <!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
-        <link rel="stylesheet" href="css/photosList.css"/>
+        <link rel="stylesheet" href="css/photoViewer.css"/>
         <title>Hello World</title>
         
         
@@ -17,31 +23,17 @@
         <script type="text/javascript" src="js/cobalt.js"></script>
         <script type="text/javascript" src="handlebars.min.js"></script>
         <script type="text/javascript" src="js/utils.js"></script>
-        <script id="tpl_photos" type="text/x-handlebars-template">
+      
+        <div id="Photoviewer" style="background-image:url(img/photos.jpg)"> 
             
+            <div id="left" class="left sideButton"> <p data-icon="&#xe113;"></p></div> 
+            <div id="right" class="right sideButton"> <p data-icon="&#xe105;"></p></div> 
+            <div style="clear:both"></div> 
             
-            {{#photos}}
-            
-            
-            <div class="picSlate" src="{{url_s}}" data-id="{{@index}}" style="background-image:url({{url_s}})">
-            
-            </div>
-                    
-                
-            {{/photos}}
-                
-                
-        </script>
-            
-            
-            
-            
-            
-            
-        <div id="PhotoGrid">  
-           
         </div> 
-            
+       
+
+       
             
             
         <script>
@@ -67,17 +59,11 @@
             });
                         
             });
-            $('.picSlate').on('tap click',function(){
-                
-               
-            
-            });
                    
             function jsonFlickrApi(data){
             var photos=data.photoset.photo;
-            // Saving photo list
-            utils.storage.removeItem("photos");
-            utils.storage.setItem("photos",photos,"json");            
+            console.log("This is data");
+            console.log(photos);
             
              var srcTpl=$("#tpl_photos").html();
              var tpl=Handlebars.compile(srcTpl);
