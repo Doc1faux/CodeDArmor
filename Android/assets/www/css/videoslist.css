@@ -104,12 +104,8 @@ ul li{
     text-align: left;
 }
 
-.shadow:hover{
-    background-color: rgba(0,0,0,0);
-    position: absolute;
-    top: 0;
-    left: 0;
-}
+
+
 .play{
     
     position: absolute;

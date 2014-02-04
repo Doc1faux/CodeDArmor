@@ -3,27 +3,35 @@ package fr.cobalt.codedarmor.fragments;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import fr.cobalt.codedarmor.R;
+import fr.cobaltians.cobalt.fragments.HTMLFragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import fr.cobalt.codedarmor.R;
-import fr.cobaltians.cobalt.fragments.HTMLFragment;
+import android.webkit.JavascriptInterface;
+import android.widget.ListView;
 
-public class DetailedEventsFragment extends HTMLFragment{
+
+
+public class ListFragment extends HTMLFragment{
+	
+	    private DrawerLayout mDrawerLayout;
+	    
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		
-		
-		this.mPage="";
+		this.mDrawerLayout = (DrawerLayout) this.getActivity().findViewById(R.id.drawer_layout);
+
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 		//Getting the first web page from assets
-		
+		this.mPage="eventsList.html";
+		enableLogging(true);
 
 
 		return view;
@@ -32,7 +40,7 @@ public class DetailedEventsFragment extends HTMLFragment{
 	@Override
 	protected int getLayoutToInflate()
 	{
-		return R.layout.detailedview_layout;
+		return R.layout.activity_home;
 	}
 	
 	@Override
@@ -42,6 +50,15 @@ public class DetailedEventsFragment extends HTMLFragment{
 		if (getArguments() == null) {
 			enablePullToRefresh();
 		}
+	}
+	
+	@Override
+	@JavascriptInterface
+	public boolean handleMessageSentByJavaScript(String messageJS) {
+
+		
+		
+		return super.handleMessageSentByJavaScript(messageJS);	
 	}
 
 	@Override
@@ -53,24 +70,25 @@ public class DetailedEventsFragment extends HTMLFragment{
 	@Override
 	protected boolean onUnhandledEvent(String event, JSONObject data,
 			String callback) {
+
 		
-		// Catch a "Play video event" and trigger an intent
-		if(event.equals("ShareEvent")){
-			
-			String link="Undefined";
-			try {
-				link = data.getString("link");
-				this.getActivity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(link)));
+			// Catch a "Play video event" and trigger an intent
+			if(event.equals("PlayVideo")){
+				
+				String link="Undefined";
+				try {
+					link = data.getString("link");
+					this.getActivity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(link)));
 
-			} catch (JSONException e) {
-				System.out.println(e+"  Value is :"+link);
-				e.printStackTrace();
+				} catch (JSONException e) {
+					System.out.println(e+"  Value is :"+link);
+					e.printStackTrace();
+				}
+				
+
+				
 			}
-			
-
-			
-		}
-	return true;
+		return true;
 	}
 
 	@Override
@@ -90,5 +108,4 @@ public class DetailedEventsFragment extends HTMLFragment{
 		// TODO Auto-generated method stub
 		
 	}
-
 }

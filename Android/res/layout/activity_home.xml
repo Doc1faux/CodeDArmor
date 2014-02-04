@@ -12,8 +12,10 @@
 	    android:layout_height="fill_parent" />
     
     <!-- The navigation drawer -->
-    <ListView android:id="@+id/left_drawer"
-        android:layout_width="240dp"
+    <fragment
+        class="fr.cobalt.codedarmor.fragments.SideMenuFragment"
+        android:id="@+id/left_drawer"
+        android:layout_width="400dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:choiceMode="singleChoice"

@@ -1,47 +1,39 @@
 package fr.cobalt.codedarmor.fragments;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import fr.cobalt.codedarmor.R;
 import fr.cobaltians.cobalt.fragments.HTMLFragment;
 
-public class DetailedEventsFragment extends HTMLFragment{
+public class SideMenuFragment extends HTMLFragment{
 
+	/**
+	 * @param args
+	 */
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
 		
+		mPage="sideMenu.html";
+		enableLogging(true);
+
 		
-		this.mPage="";
-		View view = super.onCreateView(inflater, container, savedInstanceState);
+ View view = super.onCreateView(inflater, container, savedInstanceState);
 		//Getting the first web page from assets
 		
-
+ 		
 
 		return view;
 	}
-	
-	@Override
-	protected int getLayoutToInflate()
-	{
-		return R.layout.detailedview_layout;
-	}
-	
+
 	@Override
 	public void onStart() {
 		super.onStart();
-		//Enabling pull to refresh on start
-		if (getArguments() == null) {
-			enablePullToRefresh();
-		}
+		
 	}
 
 	@Override
@@ -53,24 +45,9 @@ public class DetailedEventsFragment extends HTMLFragment{
 	@Override
 	protected boolean onUnhandledEvent(String event, JSONObject data,
 			String callback) {
-		
-		// Catch a "Play video event" and trigger an intent
-		if(event.equals("ShareEvent")){
-			
-			String link="Undefined";
-			try {
-				link = data.getString("link");
-				this.getActivity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(link)));
-
-			} catch (JSONException e) {
-				System.out.println(e+"  Value is :"+link);
-				e.printStackTrace();
-			}
-			
-
-			
-		}
-	return true;
+		System.out.println(data.toString());
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override

@@ -10,21 +10,64 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="css/sideMenu.css"/>
+        
+        <script type="text/javascript" src="js/zepto.js"></script>
+        <script type="text/javascript" src="js/cobalt.js"></script>
 
     </head>
     <body >
         <div id="sideMenuContainer">
-            <h2>Code d'Armor</h2>
+            <div id='logo'><img src="img/logo-270.png" alt="bannerGDG.png"/></div>
                 
             <ul>
-                <li><div style="background-image:url(img/event.png)"></div> <p>Evenements</p></li> 
-                <li><div style="background-image:url(img/slides.jpg)"></div> <p>Slides</p></li> 
-                <li><div style="background-image:url(img/videos.jpg)"></div><p>Vidéos</p></li> 
-                <li><div style="background-image:url(img/photos.jpg)"></div> <p>Photos</p></li>          
+                <li id="events"><div style="background-image:url(img/icon_gdg.png)"></div> <p>Evenements</p></li> 
+                <li id="slides"><div style="background-image:url(img/icon_gdg.png)"></div> <p>Slides</p></li> 
+                <li id="videos"><div style="background-image:url(img/icon_gdg.png)"></div><p>Vidéos</p></li> 
+                <li id="photos"><div style="background-image:url(img/icon_gdg.png)"></div> <p>Photos</p></li>          
             </ul>
            </div>     
         
-        <div id='footer'><img src="bannerGDG.png" alt="bannerGDG.png"/></div>
         
+        <script>
+                    Zepto(function($){
+                    
+                      cobalt.init({   
+                          
+                          events:{
+                            
+                                
+                                
+                            },
+                            debug:true     
+                            
+                            
+                            
+                        });       
+                        
+                    $('li').on('tap click',function(){
+                            var id=$(this).attr("id");
+                            cobalt.log(id);
+                              switch(id){
+                              
+                              case "events": cobalt.log("Event sent");cobalt.navigate('push','eventsList.html',"ListView"); break;
+                              case "slides":cobalt.sendEvent("DoSlide"); break;
+                              case "photos":cobalt.log("Ok photos");cobalt.navigate('push','photosList.html',"ListView") ;break ;
+                              case "videos": cobalt.navigate('push','videoslist.html',"ListView"); break  ;
+                              
+                              }
+   
+                           return false;
+                        });
+                                           
+                        
+                                  
+                        
+                        
+                        
+                        
+                    });
+                    
+                    
+        </script>
     </body>
 </html>

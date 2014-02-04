@@ -7,30 +7,31 @@ var config = {
     'cover_photo'   : true, //Make sure you have 940x180 image
     'cover_color'   : '#ffffff',
     'custom_albums' : {
-        events : {
-            
-            
+        events : {        
         }
     }
-}
+};
 
 var photoConfig ={
     'api_key': '84d459948b86bb12867e416ae7b42077',
     photoset_id: '72157632762645410'
-}   
+}   ;
 
 var infoGplus ={
     'aboutMe':null,
     'coverUrl':null,
     'avatarUrl':null
-}
+};
 
 var events =[
     
-]
+];
 var videos=[
     
-]
+];
+var photos=[
+    
+];
 function processInfoGplus(data){
     infoGplus.aboutMe=data.aboutMe;
     infoGplus.coverUrl=data.cover.coverPhoto.url;
@@ -46,7 +47,7 @@ function getInfoGplus(){
         type : 'GET',
         dataType:"json",
         success:function(data){
-            processInfoGplus(data);
+        processInfoGplus(data);
             
             
         },
@@ -56,7 +57,7 @@ function getInfoGplus(){
         
         
         
-    }
+    };
     
     $.ajax(settings);
     
@@ -90,7 +91,7 @@ function getVideos(callback){
             nativeBridge.log("fail : "+data);
             
         }
-    }
+    };
     $.ajax(settings);
     
     
@@ -112,7 +113,7 @@ function getEvents(callback){
         
         
         
-    }
+    };
     
     
     
@@ -120,39 +121,8 @@ function getEvents(callback){
     
 }
 
-function jsonFlickrApi(data){
-    console.log(data);
-}
 
-function getPhotos(setId){
-    
-    var settings={
-        url:"http://api.flickr.com/services/rest/?&method=flickr.photosets.getPhotos&api_key=" + photoConfig.api_key + "&photoset_id=" + setId+ "&format=json&media=photos&extras=url_o",
-        type : 'GET',
-        dataType:'jsonp',
-        success:function(data){
-            events=data;
-            console.log(data);
-        },
-        error:function(data){
-            
-            nativeBridge.alert("wrong structure : ");
-            console.log(data);
-            
-        }
-        
-       
-        
-    }
-    
-    
-    
-    $.ajax(settings);
-    
-}
-function jsonFlickrApi(data){
-    console.log(data);
-}
+
 
 function buildEventBriteUrl(){
     

@@ -5,24 +5,24 @@
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
         <link rel="stylesheet" href="css/style.css"/>
         <title>Hello World</title>
-        
+        <script type="text/javascript" src="js/webService.js"></script>
+        <script type="text/javascript" src="js/zepto.js"></script>
+        <script type="text/javascript" src="js/utils.storage.js"></script>
+        <script type="text/javascript" src="js/cobalt.js"></script>
+        <script type="text/javascript" src="handlebars.min.js"></script>
+        <script type="text/javascript" src="js/utils.js"></script>
         
             
     </head>
     <body>
-        <script type="text/javascript" src="js/webService.js"></script>
-        <script type="text/javascript" src="js/zepto.js"></script>
-        <script type="text/javascript" src="js/utils.storage.js"></script>
-        <script type="text/javascript" src="js/nativeBridge/nativeBridge.js"></script>
-        <script type="text/javascript" src="handlebars.min.js"></script>
-        <script type="text/javascript" src="js/utils.js"></script>
+        
         <script id="tpl_listEvents" type="text/x-handlebars-template">
             
             
             <ul>
             {{#events}}
             
-            <li  class="eventBlock" index={{@index}} ><img class="imgDesc" src="{{iconUrl}}" alt="IMG not found"><div><h2>{{title}}</h2><p>{{description}}</p><img src="img/menu.png" alt="fail"></div></li>
+            <li  class="eventBlock" index={{@index}} ><img class="imgDesc" src="img/icon_gdg.png" alt="IMG not found"><div><h2>{{title}}</h2><p>{{description}}</p><img src="img/menu.png" alt="fail"></div></li>
                     
             {{/events}}
             </ul>
@@ -53,8 +53,7 @@
         var html=tpl({events : events});  
         $("#eventList").append(html);
         var width=$('li:first-child').width();
-        console.log('width : '+width);
-        console.log(events);
+        
         $('li').each(function(){ 
             var p=$(this).find('p');
             var limit;
@@ -76,8 +75,9 @@
                             utils.storage.enable();
                             utils.storage.setItem('eventIndex',index);
                             console.log("Saved : "+utils.storage.getItem('eventIndex','int'));
-                            nativeBridge.log(index);
-                            nativeBridge.navigate('push','detailedEvents.html','detailedEventsView');
+                            cobalt.log(index);
+                            cobalt.sendEvent("event event");
+                            cobalt.navigate('push','detailedEvents.html','detailedEventsView');
                             return false;
                         });
                     });
@@ -89,16 +89,17 @@
         <script>
                     Zepto(function($){
                                            
-                        nativeBridge.init({                    	
-                            debug:true     
+                        cobalt.init({                    	
+                            debug:true,
                             ,events:{
                                 
-                                "pullToRefreshRefresh" : function(event){
-                                    nativeBridge.log('Refresh');                           
-                                    nativeBridge.sendCallback(event);
+                "pullToRefresh" : function(event){
+                    cobalt.log('Refresh');                           
+                    cobalt.sendCallback(event);
                                     
                                 }
                             }
+                            
                         });
                         
                         

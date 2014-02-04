@@ -154,7 +154,7 @@ ul li:nth-child(even){
 .eventBlock div{
     
     padding: 5px;
-    height: 90%;;
+    height: 90%;
    
     overflow: hidden;
     text-align: left;
@@ -181,7 +181,7 @@ ul li:nth-child(even){
     margin-top: 10px;
     overflow: hidden;
     line-height:15px   ;    
-/*    word-wrap: break-word;  */
+
     font-size: 12px;
     margin-bottom: 0;
  

@@ -18,7 +18,7 @@ and open the template in the editor.
         <script type="text/javascript" src="js/webService.js"></script>
         <script type="text/javascript" src="js/utils.storage.js"></script>
         <script type="text/javascript" src="js/zepto.js"></script>
-        <script type="text/javascript" src="js/nativeBridge/nativeBridge.js"></script>
+        <script type="text/javascript" src="js/cobalt.js"></script>
         <script type="text/javascript" src="handlebars.min.js"></script>
        <script id="tpl_detailedEvent" type="text/x-handlebars-template">
      
@@ -35,10 +35,10 @@ and open the template in the editor.
                 <h2>{{title}}</h2> 
                 <br>
                 {{#if isOver}}          
-                <h3   id="CobaltDetailedEventRegister">L'évènement est déja passé </h3>
+                <h3  id="CobaltDetailedEventRegister">L'évènement est déja passé </h3>
                 
                 {{else}}          
-                <h3   id="CobaltDetailedEventRegister">"Inscrivez vous"</h3>
+                <h3    id="CobaltDetailedEventRegister">"Inscrivez vous"</h3>
                 
                 {{/if}}            
                         
@@ -89,7 +89,7 @@ and open the template in the editor.
                 }else{
                     currentEvent.isOver=false;
                 }
-                nativeBridge.log("index"+index);
+                cobalt.log("index"+index);
                 
                 var srcTpl=$("#tpl_detailedEvent").html();
                 var tpl=Handlebars.compile(srcTpl);

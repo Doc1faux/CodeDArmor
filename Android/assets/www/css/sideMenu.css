@@ -32,7 +32,6 @@ and open the template in the editor.
 }
 #sideMenuContainer ul{
     height: 300px;
-    margin-top: 20px;
     padding-left: 0;
     color: #555555;
     
@@ -42,7 +41,7 @@ and open the template in the editor.
 #sideMenuContainer ul li{
     
     border-width: 1px;
-    height: 75px;;
+    height: 75px;
     list-style: none;
     color: #555555;
     font-family: sans-serif;
@@ -70,6 +69,14 @@ and open the template in the editor.
     padding-left: 10px;
     float: left;
 }
-footer{
-    float: bottom;
+#logo{
+   
+    width: 100%;
+    
 }
+
+#logo img{
+    padding-left: 20px;
+    
+    height:150px;
+    }
