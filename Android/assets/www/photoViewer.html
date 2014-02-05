@@ -11,8 +11,8 @@ and open the template in the editor.
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
         <link rel="stylesheet" href="css/photoViewer.css"/>
         <title>Hello World</title>
-        
-        
+            
+            
             
     </head>
     <body>
@@ -20,74 +20,82 @@ and open the template in the editor.
         <script type="text/javascript" src="js/webService.js"></script>
         <script type="text/javascript" src="js/zepto.js"></script>
         <script type="text/javascript" src="js/utils.storage.js"></script>
-        <script type="text/javascript" src="js/cobalt.js"></script>
+            
         <script type="text/javascript" src="handlebars.min.js"></script>
-        <script type="text/javascript" src="js/utils.js"></script>
-      
-        <div id="Photoviewer" style="background-image:url(img/photos.jpg)"> 
+        <script type="text/javascript" src="js/codedArmor/app.js"></script>
+        <script type="text/javascript" src="js/codedArmor/app.photoViewer.js"></script>
+        <script type="text/javascript" src="js/cobalt.js"></script>
+            
+            
+        <div id="Photoviewer" style="background-image:url()"> 
             
             <div id="left" class="left sideButton"> <p data-icon="&#xe113;"></p></div> 
             <div id="right" class="right sideButton"> <p data-icon="&#xe105;"></p></div> 
             <div style="clear:both"></div> 
-            
+                
         </div> 
-       
-
-       
+            
+            
+            
             
             
         <script>
             
-            getPhotos(photoConfig.photoset_id,"s");
-                       
-                       
-                       
-                       
-        
+            
+            
+            
+            
+            
+            
             Zepto(function($){
+                
+                cobalt.init({                    	
+                    debug:true     
+                    ,events:{
                         
-            cobalt.init({                    	
-            debug:true     
-            ,events:{
-            
-            "pullToRefresh" : function(event){
-            cobalt.log('Refresh');                           
-            cobalt.sendCallback(event);
-                                        
-            }
-            }
+                        "pullToRefresh" : function(event){
+                            cobalt.log('Refresh');                           
+                            cobalt.sendCallback(event);
+                            
+                        }
+                    }
+                });
+                
+               
+                
+                function getPhotos(setId,size){            
+                    var settings={
+                        url:"http://api.flickr.com/services/rest/?&method=flickr.photosets.getPhotos&api_key=" + photoConfig.api_key + "&photoset_id=" + setId+ "&format=json&media=photos&extras=url_"+size,
+                        type : 'GET',
+                        dataType:'jsonp'};        
+                    $.ajax(settings);        
+                }
+                
+                getPhotos(photoConfig.photoset_id,"o");  
+                
             });
-                        
-            });
-                   
-            function jsonFlickrApi(data){
-            var photos=data.photoset.photo;
-            console.log("This is data");
-            console.log(photos);
             
-             var srcTpl=$("#tpl_photos").html();
-             var tpl=Handlebars.compile(srcTpl);
-             var html=tpl({photos : photos});  
-             $("#PhotoGrid").append(html);
-             html="<div style='clear:both'></div>";
-             $("#PhotoGrid").append(html);
-       
-            }
-    
-            function getPhotos(setId,size){            
-            var settings={
-            url:"http://api.flickr.com/services/rest/?&method=flickr.photosets.getPhotos&api_key=" + photoConfig.api_key + "&photoset_id=" + setId+ "&format=json&media=photos&extras=url_"+size,
-            type : 'GET',
-            dataType:'jsonp'};        
-            $.ajax(settings);        
-            }
+             function jsonFlickrApi(data){
+                    var photos=data.photoset.photo;
+                    console.log("This is data");
+                    console.log(photos);
+                    app.photoViewer.urlPhotosList=photos;
+                    app.photoViewer.init();    
+                    
+                    
+                }
             
-
+            
+            
+            
+            
+            
+            
         </script>
-                    
-                    
-                    
-                    
-                    
+            
+            
+            
+            
+            
     </body>
 </html>

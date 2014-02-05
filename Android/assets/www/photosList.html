@@ -13,10 +13,11 @@
         
         <script type="text/javascript" src="js/webService.js"></script>
         <script type="text/javascript" src="js/zepto.js"></script>
-        <script type="text/javascript" src="js/utils.storage.js"></script>
+        <!--<script type="text/javascript" src="js/utils.storage.js"></script>-->
         <script type="text/javascript" src="js/cobalt.js"></script>
         <script type="text/javascript" src="handlebars.min.js"></script>
         <script type="text/javascript" src="js/utils.js"></script>
+        <script type="text/javascript" src="js/codedArmor/app.js"></script>
         <script id="tpl_photos" type="text/x-handlebars-template">
             
             
@@ -46,7 +47,7 @@
             
         <script>
             
-            getPhotos(photoConfig.photoset_id,"s");
+            
                        
                        
                        
@@ -65,29 +66,7 @@
             }
             }
             });
-                        
-            });
-            $('.picSlate').on('tap click',function(){
-                
-               
             
-            });
-                   
-            function jsonFlickrApi(data){
-            var photos=data.photoset.photo;
-            // Saving photo list
-            utils.storage.removeItem("photos");
-            utils.storage.setItem("photos",photos,"json");            
-            
-             var srcTpl=$("#tpl_photos").html();
-             var tpl=Handlebars.compile(srcTpl);
-             var html=tpl({photos : photos});  
-             $("#PhotoGrid").append(html);
-             html="<div style='clear:both'></div>";
-             $("#PhotoGrid").append(html);
-       
-            }
-    
             function getPhotos(setId,size){            
             var settings={
             url:"http://api.flickr.com/services/rest/?&method=flickr.photosets.getPhotos&api_key=" + photoConfig.api_key + "&photoset_id=" + setId+ "&format=json&media=photos&extras=url_"+size,
@@ -95,6 +74,36 @@
             dataType:'jsonp'};        
             $.ajax(settings);        
             }
+            
+            getPhotos(photoConfig.photoset_id,"s");
+             
+                        
+            });
+                  
+            function jsonFlickrApi(data){
+            var photos=data.photoset.photo;
+            // Saving photo list
+//            utils.storage.removeItem("photos");
+//            utils.storage.setItem("photos",photos,"json");            
+            
+             var srcTpl=$("#tpl_photos").html();
+             var tpl=Handlebars.compile(srcTpl);
+             var html=tpl({photos : photos});  
+             $("#PhotoGrid").append(html);
+             html="<div style='clear:both'></div>";
+             $("#PhotoGrid").append(html);
+             
+            
+            
+            app.touch('.picSlate',function(){
+                        var dataId=$(this).data("id");
+                        cobalt.storage.setItem("currentPhoto",dataId,"int");
+                        cobalt.navigate('push','photoViewer.html',"detailedView");		});
+                    return false ;
+       
+            }
+    
+            
             
 
         </script>

@@ -403,8 +403,8 @@ var cobalt={
 		setItem:function(uid, value, type){
 			if (this.storage){
 				switch ( type ){
-					case undefined :return this.storage.setItem(uid,""+value);
 					case 'json' :   return this.storage.setItem(uid, JSON.stringify(value));
+                                        default :    return this.storage.setItem(uid,""+value);
 				}
 			}
 		},

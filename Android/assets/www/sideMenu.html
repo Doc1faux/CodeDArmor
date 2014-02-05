@@ -47,12 +47,13 @@ and open the template in the editor.
                     $('li').on('tap click',function(){
                             var id=$(this).attr("id");
                             cobalt.log(id);
-                              switch(id){
+//                           
+                            switch(id){
                               
-                              case "events": cobalt.log("Event sent");cobalt.navigate('push','eventsList.html',"ListView"); break;
+                              case "events": cobalt.log("Event sent");cobalt.sendEvent("switchFragment",{page:"eventsList"}); break;
                               case "slides":cobalt.sendEvent("DoSlide"); break;
-                              case "photos":cobalt.log("Ok photos");cobalt.navigate('push','photosList.html',"ListView") ;break ;
-                              case "videos": cobalt.navigate('push','videoslist.html',"ListView"); break  ;
+                              case "photos":cobalt.log("Ok photos");cobalt.sendEvent("switchFragment",{page:"photosList"}); ;break ;
+                              case "videos": cobalt.sendEvent("switchFragment",{page:"videoslist"}); break  ;
                               
                               }
    

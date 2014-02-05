@@ -7,31 +7,34 @@ app.photoViewer={
     
     urlPhotosList:[],
     currentPhoto:0,
-    $viewToRender:"",
+    viewToRender:"",
     
     init:function(){
         
-        $viewToRender=$(Photoviewer);
-        
-        
+        this.viewToRender=$(Photoviewer);
+        this.setListener();
+        this.currentPhoto=cobalt.storage.getItem("currentPhoto","int");
+        this.renderCurrentPhoto();
       
     },
     
     setListener:function(){
         
         $('#left').on('tap click',function(){
-          
+          console.log(app.photoViewer.currentPhoto);
             if(app.photoViewer.currentPhoto>0){
                 app.photoViewer.currentPhoto--;   
             }
             else{               
                 app.photoViewer.currentPhoto=app.photoViewer.urlPhotosList.length;              
             }
-            app.photoViewer.renderCurrentPhoto();    
+            app.photoViewer.renderCurrentPhoto();
+            cobalt.log(app.photoViewer.currentPhoto);
+            return false;
         });
         
         $('#right').on('tap click',function(){
-            
+            console.log(app.photoViewer.currentPhoto);
             if(app.photoViewer.currentPhoto<app.photoViewer.urlPhotosList.length){                
                 app.photoViewer.currentPhoto++;                
             }           
@@ -39,7 +42,9 @@ app.photoViewer={
                 app.photoViewer.currentPhoto=0;                
             }
             
-            app.photoViewer.renderCurrentPhoto(); 
+            app.photoViewer.renderCurrentPhoto();
+            cobalt.log(app.photoViewer.currentPhoto);
+            return false;
             
         });
         
@@ -49,6 +54,8 @@ app.photoViewer={
             
         },
     renderCurrentPhoto:function(){
+        
+       this.viewToRender.css("background-image","url("+this.urlPhotosList[this.currentPhoto].url_o+")");   
         
         
     }    

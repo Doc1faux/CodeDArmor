@@ -5,6 +5,7 @@ import org.json.JSONObject;
 
 import fr.cobalt.codedarmor.R;
 import fr.cobaltians.cobalt.fragments.HTMLFragment;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,50 +16,19 @@ import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 import android.widget.ListView;
 
-
-
 public class ListFragment extends HTMLFragment{
-	
-	    private DrawerLayout mDrawerLayout;
 	    
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-
-		this.mDrawerLayout = (DrawerLayout) this.getActivity().findViewById(R.id.drawer_layout);
-
 		View view = super.onCreateView(inflater, container, savedInstanceState);
+
 		//Getting the first web page from assets
-		this.mPage="eventsList.html";
+		mPage="eventsList.html";
 		enableLogging(true);
 
 
 		return view;
-	}
-	
-	@Override
-	protected int getLayoutToInflate()
-	{
-		return R.layout.activity_home;
-	}
-	
-	@Override
-	public void onStart() {
-		super.onStart();
-		//Enabling pull to refresh on start
-		if (getArguments() == null) {
-			enablePullToRefresh();
-		}
-	}
-	
-	@Override
-	@JavascriptInterface
-	public boolean handleMessageSentByJavaScript(String messageJS) {
-
-		
-		
-		return super.handleMessageSentByJavaScript(messageJS);	
 	}
 
 	@Override
@@ -70,7 +40,8 @@ public class ListFragment extends HTMLFragment{
 	@Override
 	protected boolean onUnhandledEvent(String event, JSONObject data,
 			String callback) {
-
+			
+			
 		
 			// Catch a "Play video event" and trigger an intent
 			if(event.equals("PlayVideo")){
@@ -78,16 +49,17 @@ public class ListFragment extends HTMLFragment{
 				String link="Undefined";
 				try {
 					link = data.getString("link");
-					this.getActivity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(link)));
+					getActivity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(link)));
 
 				} catch (JSONException e) {
-					System.out.println(e+"  Value is :"+link);
+
 					e.printStackTrace();
 				}
 				
 
 				
 			}
+			
 		return true;
 	}
 
