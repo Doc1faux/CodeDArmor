@@ -50,7 +50,7 @@
     getEvents(function(){
         utils.storage.enable();
         utils.storage.setItem('jsonEvents',events,'json');
-        var html=tpl({events : events});  
+        var html=tpl({events : events.reverse()});  
         $("#eventList").append(html);
         var width=$('li:first-child').width();
         
@@ -91,7 +91,7 @@
                                            
                         cobalt.init({                    	
                             debug:true,
-                            ,events:{
+                            events:{
                                 
                 "pullToRefresh" : function(event){
                     cobalt.log('Refresh');                           

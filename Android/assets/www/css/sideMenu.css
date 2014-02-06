@@ -69,6 +69,45 @@ and open the template in the editor.
     padding-left: 10px;
     float: left;
 }
+
+@media screen and (max-height: 420px) {
+
+    #logo{
+   
+    display: none;
+    
+}
+
+#sideMenuContainer ul li div{
+    margin-left:20px; 
+    margin-top: 10px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 40px;
+    width: 40px;
+    float: left
+        
+}
+
+#sideMenuContainer ul li p{
+    margin-top:20px;
+    padding-left: 10px;
+    float: left;
+}
+
+
+#sideMenuContainer ul li{
+    
+    border-width: 1px;
+    height: 55px;
+    list-style: none;
+    color: #555555;
+    font-family: sans-serif;
+}
+
+
+}
 #logo{
    
     width: 100%;
@@ -78,5 +117,9 @@ and open the template in the editor.
 #logo img{
     padding-left: 20px;
     
-    height:150px;
+    height: 114px;
     }
+    
+
+    
+
