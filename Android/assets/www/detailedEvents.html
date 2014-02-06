@@ -77,6 +77,17 @@ and open the template in the editor.
             
             Zepto(function($){
             
+            cobalt.init({                    	
+                    debug:true     
+                    ,events:{
+                    
+                    "pullToRefresh" : function(event){
+                    cobalt.log('Refresh');                           
+                    cobalt.sendCallback(event);
+                                
+                    }
+                    }
+            });
             
             utils.storage.enable();
             var eventsList=utils.storage.getItem('jsonEvents','json');

@@ -89,20 +89,19 @@
         <script>
                     Zepto(function($){
                                            
-                        cobalt.init({                    	
-                            debug:true,
-                            events:{
-                                
-                "pullToRefresh" : function(event){
+                    cobalt.init({                    	
+                    debug:true     
+                    ,events:{
+                    
+                    "pullToRefresh" : function(event){
                     cobalt.log('Refresh');                           
                     cobalt.sendCallback(event);
-                                    
-                                }
-                            }
-                            
-                        });
-                        
-                        
+                                
+                    }
+                    }
+                    });
+                    
+                    
                         
                     });
                     
