@@ -54,8 +54,7 @@ public class DetailedEventsFragment extends HTMLFragment{
 	protected boolean onUnhandledEvent(String event, JSONObject data,
 			String callback) {
 		
-		// Catch a "Play video event" and trigger an intent
-		if(event.equals("ShareEvent")){
+		if(event.equals("register")){
 			
 			String link="Undefined";
 			try {
@@ -70,6 +69,28 @@ public class DetailedEventsFragment extends HTMLFragment{
 
 			
 		}
+		else if(event.equals("share")){
+			
+			String link="Undefined";
+			String title="Undefined";
+			try {
+				link = data.getString("link");
+				title=data.getString("title");
+				Intent s = new Intent(android.content.Intent.ACTION_SEND);
+
+		        s.setType("text/plain");
+		        s.putExtra(Intent.EXTRA_SUBJECT, "Code d'Armor");
+		        s.putExtra(Intent.EXTRA_TEXT,"Inscrivez vous à l'évènement \""+title+"\" : "+link);
+
+		        startActivity(Intent.createChooser(s, "Quote"));
+
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			
+		}
+			
+		
 	return true;
 	}
 

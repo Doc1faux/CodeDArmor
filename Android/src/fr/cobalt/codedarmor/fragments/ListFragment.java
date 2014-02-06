@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,8 @@ import android.webkit.JavascriptInterface;
 import android.widget.ListView;
 
 public class ListFragment extends HTMLFragment{
-	    
+	 
+	private Bundle webBundle;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -41,7 +43,7 @@ public class ListFragment extends HTMLFragment{
 	protected boolean onUnhandledEvent(String event, JSONObject data,
 			String callback) {
 			
-			
+			System.out.println(event);
 		
 			// Catch a "Play video event" and trigger an intent
 			if(event.equals("PlayVideo")){
@@ -59,6 +61,8 @@ public class ListFragment extends HTMLFragment{
 
 				
 			}
+	
+			
 			
 		return true;
 	}

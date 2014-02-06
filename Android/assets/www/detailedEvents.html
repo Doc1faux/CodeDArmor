@@ -20,94 +20,121 @@ and open the template in the editor.
         <script type="text/javascript" src="js/zepto.js"></script>
         <script type="text/javascript" src="js/cobalt.js"></script>
         <script type="text/javascript" src="handlebars.min.js"></script>
-       <script id="tpl_detailedEvent" type="text/x-handlebars-template">
-     
-    
-    
-    {{#event}}  
-    <div id="imageBackground" style="background-image:url(img/event.png)"></div>
-    <div id="DetailedViewContainer">
-    
-    <div id="CobaltDetailedEventHeader">
-                    
+        <script type="text/javascript" src="js/utils.format.date.js"></script>
+        <script type="text/javascript" src="js/codedArmor/app.js"></script>
+        <script id="tpl_detailedEvent" type="text/x-handlebars-template">
+            
+            
+            
+            {{#event}}  
+            <div id="imageBackground" style="background-image:url(img/event.png)"></div>
+            <div id="DetailedViewContainer">
+            
+            <div id="CobaltDetailedEventHeader">
+            
             <img src="img/icon_gdg.png" alt="GDG_image"/>
             <div id="headerTitles">
-                <h2>{{title}}</h2> 
-                <br>
-                {{#if isOver}}          
-                <h3  id="CobaltDetailedEventRegister">L'évènement est déja passé </h3>
-                
-                {{else}}          
-                <h3    id="CobaltDetailedEventRegister">"Inscrivez vous"</h3>
-                
-                {{/if}}            
-                        
+            <h2>{{title}}</h2> 
+            <br>
+            {{#if isOver}}          
+            <h3  id="CobaltDetailedEventRegister">Inscriptions terminées </h3>
+            
+            {{else}}          
+            <h3  data-url={{url}} id="CobaltDetailedEventRegister">Inscrivez vous !</h3>
+            <br>
+            <br>
+            <p id="share" data-title="{{title}}"  data-url={{url}}  data-icon="&#xe038;"></p>  
+            {{/if}}            
+            
             </div>
-                        
+            
             <div style="clear:both;"></div>           
-                        
-        </div>    
-        <div id="ContentContainer">
+            
+            </div>    
+            <div id="ContentContainer">
             <p>
-                {{description}}
+            {{description}}
             </p>
-                        
-        </div>
-    
-    
-    
-                      
-         </div>           
-                      
+            
+            </div>
+            
+            
+            
+            
+            </div>           
+            
             {{/event}}
         </script>
-  
-          
-<!--        <div id="detail"></div>-->
-
-
-            
-            
-            
-<script>
-            
-            
-            
-            
+        
+        
+        <!--        <div id="detail"></div>-->
+        
+        
+        
+        
+        
+        <script>
             
             Zepto(function($){
+            
+            
+            utils.storage.enable();
+            var eventsList=utils.storage.getItem('jsonEvents','json');
+            var index= utils.storage.getItem('eventIndex','int');
+            console.log(eventsList[index].temporalRelation);
+            currentEvent=eventsList[index];
+            
+            if(currentEvent.temporalRelation==="past"){
+            currentEvent.isOver=true;
+            }else{
+            currentEvent.isOver=false;
+            
+            
+            }
+            
+            utils.formatting.date.enable();
+            
+            var date=new Date(currentEvent.start);
+            var formatDate=date.format("mmyyyy");              
+            var url="http://codedarmor"+formatDate+".eventbrite.fr";
+            
+            currentEvent.url=url;
+            
+            cobalt.log("index"+index);
+            var srcTpl=$("#tpl_detailedEvent").html();
+            var tpl=Handlebars.compile(srcTpl);
+            currentEvent.description=escapeHTML(currentEvent.description);               
+            var html=tpl({event : currentEvent});  
+            $("body").append(html);
+                    
+            if(currentEvent.isOver===false){
+            app.touch('#CobaltDetailedEventRegister',function(){
+                 
+            var link=$(this).data("url");
+            cobalt.sendEvent("register",{link:link});
+            return false;
+                            
+            });
                 
+            app.touch('#share',function(){
                 
-                utils.storage.enable();
-                var eventsList=utils.storage.getItem('jsonEvents','json');
-                var index= utils.storage.getItem('eventIndex','int');
-                console.log(eventsList[index].temporalRelation);
-                currentEvent=eventsList[index];
-                
-                if(currentEvent.temporalRelation==="past"){
-                    currentEvent.isOver=true;
-                }else{
-                    currentEvent.isOver=false;
-                }
-                cobalt.log("index"+index);
-                
-                var srcTpl=$("#tpl_detailedEvent").html();
-                var tpl=Handlebars.compile(srcTpl);
-                currentEvent.description=escapeHTML(currentEvent.description);
-                
-                var html=tpl({event : currentEvent});  
-                                 
-
-                $("body").append(html);
-               // utils.storage.removeItem('jsonEvents');
-               // utils.storage.removeItem('eventIndex');
+            var link=$(this).data("url");
+            var title=$(this).data("title");
+            cobalt.sendEvent("share",{link:link,title:title});
+            return false;
+                            
+            });
+            }
+            
+            
+            
             });
             
-           function escapeHTML(text){
-			return new Handlebars.SafeString(Handlebars.compile("{{& text}}")({text:text}).replace(/\r?\n/g, "<br/>"));
-		}
-</script>
-            
+            function escapeHTML(text){
+            return new Handlebars.SafeString(Handlebars.compile("{{& text}}")({text:text}).replace(/\r?\n/g, "<br/>"));
+            }
+        </script>
+        
     </body>
     
     
