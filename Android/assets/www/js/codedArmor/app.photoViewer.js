@@ -47,6 +47,11 @@ app.photoViewer={
             return false;
             
         });
+        $('#share').on('tap click',function(){
+            
+            cobalt.sendEvent("sharePhoto",{link:(this.urlPhotosList[this.currentPhoto].url_o)});
+            return false;
+        });
         
     },
     getFullSizePhoto:function(){

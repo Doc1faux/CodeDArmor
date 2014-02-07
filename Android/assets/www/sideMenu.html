@@ -38,7 +38,7 @@ and open the template in the editor.
                                 
                                 
                             },
-                            debug:true     
+                                 
                             
                             
                             
@@ -50,9 +50,9 @@ and open the template in the editor.
 //                           
                             switch(id){
                               
-                              case "events": cobalt.log("Event sent");cobalt.sendEvent("switchFragment",{page:"eventsList"}); break;
-                              case "slides":cobalt.sendEvent("DoSlide"); break;
-                              case "photos":cobalt.log("Ok photos");cobalt.sendEvent("switchFragment",{page:"photosList"}); ;break ;
+                              case "events": cobalt.sendEvent("switchFragment",{page:"eventsList"}); break;
+                              case "slides":cobalt.sendEvent("switchFragment",{page:"slideList"}); break;
+                              case "photos":cobalt.sendEvent("switchFragment",{page:"photosList"}); ;break ;
                               case "videos": cobalt.sendEvent("switchFragment",{page:"videoslist"}); break  ;
                               
                               }

@@ -82,12 +82,20 @@ body{
     text-align: center;
     height: 0px;
 }
-
+#share{
+    color: white;
+    bottom: 0px;
+    position: absolute;
+    
+    font-size: 2em;
+    left: 45%;
+}
 @media screen and (max-width: 600px) {
     
     .sideButton{
         font-size: 80%;
     }
+    
    
 }
 
@@ -108,3 +116,4 @@ body{
     right: 0;
     
 }
+

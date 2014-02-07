@@ -11,7 +11,7 @@ import fr.cobaltians.cobalt.activities.HTMLActivity;
 import fr.cobaltians.cobalt.fragments.HTMLFragment;
 
 public class ListActivity extends HTMLActivity {
-	
+
 	@Override
 	protected int getLayoutToInflate() {
 		return R.layout.activity_home;
@@ -20,17 +20,25 @@ public class ListActivity extends HTMLActivity {
 	@Override
 	protected HTMLFragment getFragment(){
 		
+		
+			
 		return new ListFragment();	
 	}
 
+	
 	public void changeFragment(Fragment frag){
-		
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-		fragmentTransaction.replace(R.id.fragment_container, frag);
-		fragmentTransaction.commit();
+		
+		
 
+		fragmentTransaction.replace(R.id.fragment_container,frag);
+		fragmentTransaction.commit();
+		
+		
 		 DrawerLayout mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
 		 mDrawerLayout.closeDrawers();
 	}
+	
+	
 }

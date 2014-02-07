@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import android.os.Bundle;
 
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +21,46 @@ public class SideMenuFragment extends HTMLFragment{
 	 * @param args
 	 */
 	private HashMap<String, HTMLFragment> fragmentPile;
-	
+	private HTMLFragment currentFragment;
+	private ListActivity act;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+			act= (ListActivity)getActivity();
 
+		currentFragment=new HTMLFragment() {
+			
+			@Override
+			protected void onUnhandledMessage(JSONObject message) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			protected boolean onUnhandledEvent(String event, JSONObject data,
+					String callback) {
+				// TODO Auto-generated method stub
+				return false;
+			}
+			
+			@Override
+			protected boolean onUnhandledCallback(String callback, JSONObject data) {
+				// TODO Auto-generated method stub
+				return false;
+			}
+			
+			@Override
+			protected void onPullToRefreshRefreshed() {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			protected void onInfiniteScrollRefreshed() {
+				// TODO Auto-generated method stub
+				
+			}
+		};
 		fragmentPile=new HashMap<String, HTMLFragment>();
 		
 		mPage="sideMenu.html";
@@ -53,11 +89,14 @@ public class SideMenuFragment extends HTMLFragment{
 			if (event.equals("switchFragment")){
 				
 				
-				
+				act= (ListActivity)getActivity();
+
 				
 				HTMLFragment fragmentToCommit=null;
 				HTMLFragment fragmentPointer;
-			
+				
+				
+				
 			System.out.println("Web asked to switch fragment");
 			// Lookin for the good fragment in the pile
 			// Add it if necessary
@@ -71,12 +110,16 @@ public class SideMenuFragment extends HTMLFragment{
 						
 						fragmentToCommit=fragmentPointer;
 
+
 						
 					}
 					else{
 						
 						fragmentPile.put("eventsList",getFragmentForController(getActivity(), ListFragment.class, "ListView", page+".html"));
 						fragmentToCommit=fragmentPile.get("eventsList");
+
+
+
 						
 					}
 					
@@ -89,6 +132,7 @@ public class SideMenuFragment extends HTMLFragment{
 						
 						fragmentToCommit=fragmentPointer;
 
+
 					}
 					else{
 						
@@ -96,7 +140,6 @@ public class SideMenuFragment extends HTMLFragment{
 						fragmentToCommit=fragmentPile.get("photosList");
 						
 					}
-					
 					
 					
 				}
@@ -112,24 +155,48 @@ public class SideMenuFragment extends HTMLFragment{
 						
 						fragmentPile.put("videosList",getFragmentForController(getActivity(), ListFragment.class, "ListView", page+".html"));
 						fragmentToCommit=fragmentPile.get("videosList");
+
+
 						
 					}
 					
 					
-				}
-				else if(page.equals("slides")){
 					
 				}
-				System.out.println("Going to commit...");
-				// work here to change Activity fragments (add, remove, etc.).  Example here of adding.
-				ListActivity la=(ListActivity)getActivity();
-				la.changeFragment(fragmentToCommit);
+				else if(page.equals("slideList")){
+					
+					fragmentPointer=fragmentPile.get("slideList");
+					
+					if(fragmentPointer!=null){
+						
+						fragmentToCommit=fragmentPointer;
+					}
+					else{
+						
+						fragmentPile.put("slideList",getFragmentForController(getActivity(), ListFragment.class, "ListView", page+".html"));
+						fragmentToCommit=fragmentPile.get("slideList");
+
+					}
+						
+					
+					
+					
+				}
+				
+				
+
 				
 
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
+				System.out.println("Master error");
 				e.printStackTrace();
 			}
+			System.out.println("Going to commit...");
+
+			
+			act.changeFragment(fragmentToCommit);
+
 			
 			
 			

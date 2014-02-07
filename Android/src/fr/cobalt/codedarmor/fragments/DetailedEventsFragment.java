@@ -18,8 +18,7 @@ public class DetailedEventsFragment extends HTMLFragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		
-		
+
 		this.mPage="";
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 		//Getting the first web page from assets
@@ -53,7 +52,7 @@ public class DetailedEventsFragment extends HTMLFragment{
 	@Override
 	protected boolean onUnhandledEvent(String event, JSONObject data,
 			String callback) {
-		
+		System.out.println("trigger envent");
 		if(event.equals("register")){
 			
 			String link="Undefined";
@@ -65,8 +64,6 @@ public class DetailedEventsFragment extends HTMLFragment{
 				System.out.println(e+"  Value is :"+link);
 				e.printStackTrace();
 			}
-			
-
 			
 		}
 		else if(event.equals("share")){
@@ -85,6 +82,19 @@ public class DetailedEventsFragment extends HTMLFragment{
 		        startActivity(Intent.createChooser(s, "Quote"));
 
 			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		else if(event.equals("sharePhoto")){
+			
+			String link="Undefined";
+			try {
+				link = data.getString("link");
+				this.getActivity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(link)));
+
+			} catch (JSONException e) {
+				System.out.println(e+"  Value is :"+link);
 				e.printStackTrace();
 			}
 			

@@ -4,6 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import fr.cobalt.codedarmor.R;
+import fr.cobaltians.cobalt.customviews.OverScrollingWebView;
 import fr.cobaltians.cobalt.fragments.HTMLFragment;
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -84,4 +85,7 @@ public class ListFragment extends HTMLFragment{
 		// TODO Auto-generated method stub
 		
 	}
+	
+
+	
 }

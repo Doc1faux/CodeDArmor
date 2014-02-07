@@ -18,6 +18,8 @@
         <script type="text/javascript" src="handlebars.min.js"></script>
         <script type="text/javascript" src="js/utils.js"></script>
         <script type="text/javascript" src="js/codedArmor/app.js"></script>
+                <script type="text/javascript" src="js/cobalt.js"></script>
+
         <script id="tpl_photos" type="text/x-handlebars-template">
             
             
@@ -56,12 +58,11 @@
             Zepto(function($){
                         
             cobalt.init({                    	
-            debug:true     
-            ,events:{
+                 
+            events:{
             
             "pullToRefresh" : function(event){
-            cobalt.log('Refresh');                           
-            cobalt.sendCallback(event);
+            
                                         
             }
             }

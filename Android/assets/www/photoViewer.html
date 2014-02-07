@@ -20,11 +20,11 @@ and open the template in the editor.
         <script type="text/javascript" src="js/webService.js"></script>
         <script type="text/javascript" src="js/zepto.js"></script>
         <script type="text/javascript" src="js/utils.storage.js"></script>
-            
+        "<script type="text/javascript" src="js/cobalt.js"></script>
+   
         <script type="text/javascript" src="handlebars.min.js"></script>
         <script type="text/javascript" src="js/codedArmor/app.js"></script>
         <script type="text/javascript" src="js/codedArmor/app.photoViewer.js"></script>
-        <script type="text/javascript" src="js/cobalt.js"></script>
             
             
         <div id="Photoviewer" style="background-image:url()"> 
@@ -32,6 +32,7 @@ and open the template in the editor.
             <div id="left" class="left sideButton"> <p data-icon="&#xe113;"></p></div> 
             <div id="right" class="right sideButton"> <p data-icon="&#xe105;"></p></div> 
             <div style="clear:both"></div> 
+            <div id="share" data-icon="&#xe038;"></div>
                 
         </div> 
             
@@ -40,18 +41,12 @@ and open the template in the editor.
             
             
         <script>
-            
-            
-            
-            
-            
-            
-            
+ 
             Zepto(function($){
                 
                 cobalt.init({                    	
-                    debug:true     
-                    ,events:{
+                    debug : true,     
+                    events:{
                         
                         "pullToRefresh" : function(event){
                             cobalt.log('Refresh');                           
@@ -60,9 +55,7 @@ and open the template in the editor.
                         }
                     }
                 });
-                
-               
-                
+  
                 function getPhotos(setId,size){            
                     var settings={
                         url:"http://api.flickr.com/services/rest/?&method=flickr.photosets.getPhotos&api_key=" + photoConfig.api_key + "&photoset_id=" + setId+ "&format=json&media=photos&extras=url_"+size,
@@ -84,13 +77,7 @@ and open the template in the editor.
                     
                     
                 }
-            
-            
-            
-            
-            
-            
-            
+     
         </script>
             
             

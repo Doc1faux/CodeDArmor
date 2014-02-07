@@ -48,9 +48,10 @@
     var tpl=Handlebars.compile(srcTpl);
     
     getEvents(function(){
+        events.reverse();
         utils.storage.enable();
         utils.storage.setItem('jsonEvents',events,'json');
-        var html=tpl({events : events.reverse()});  
+        var html=tpl({events : events});  
         $("#eventList").append(html);
         var width=$('li:first-child').width();
         
@@ -90,8 +91,8 @@
                     Zepto(function($){
                                            
                     cobalt.init({                    	
-                    debug:true     
-                    ,events:{
+                         
+                    events:{
                     
                     "pullToRefresh" : function(event){
                     cobalt.log('Refresh');                           
