@@ -79,7 +79,7 @@ public class DetailedEventsFragment extends HTMLFragment{
 		        s.putExtra(Intent.EXTRA_SUBJECT, "Code d'Armor");
 		        s.putExtra(Intent.EXTRA_TEXT,"Inscrivez vous à l'évènement \""+title+"\" : "+link);
 
-		        startActivity(Intent.createChooser(s, "Quote"));
+		        startActivity(Intent.createChooser(s, "Choisissez l'application"));
 
 			} catch (JSONException e) {
 				e.printStackTrace();
@@ -91,7 +91,13 @@ public class DetailedEventsFragment extends HTMLFragment{
 			String link="Undefined";
 			try {
 				link = data.getString("link");
-				this.getActivity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(link)));
+				Intent s = new Intent(android.content.Intent.ACTION_SEND);
+
+		        s.setType("text/plain");
+		        s.putExtra(Intent.EXTRA_SUBJECT, "Code d'Armor");
+		        s.putExtra(Intent.EXTRA_TEXT,"Photo des soirées Code d'Armor : "+link);
+
+		        startActivity(Intent.createChooser(s, "Choisissez l'application"));
 
 			} catch (JSONException e) {
 				System.out.println(e+"  Value is :"+link);
