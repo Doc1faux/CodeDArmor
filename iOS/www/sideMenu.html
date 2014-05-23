@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="css/sideMenu.css"/>
+        
+        <script type="text/javascript" src="js/zepto.js"></script>
+        <script type="text/javascript" src="js/cobalt.js"></script>
+
+    </head>
+    <body >
+        <div id="sideMenuContainer">
+            <div id='logo'><img src="img/logo-270.png" alt="bannerGDG.png"/></div>
+                
+            <ul>
+                <li id="events"><div style="background-image:url(img/icon_gdg.png)"></div> <p>Evenements</p></li> 
+                <li id="slides"><div style="background-image:url(img/icon_gdg.png)"></div> <p>Slides</p></li> 
+                <li id="videos"><div style="background-image:url(img/icon_gdg.png)"></div><p>Vidéos</p></li> 
+                <li id="photos"><div style="background-image:url(img/icon_gdg.png)"></div> <p>Photos</p></li>          
+            </ul>
+           </div>     
+        
+        
+        <script>
+                    Zepto(function($){
+                    
+                      cobalt.init({   
+                          debug : true,
+                          events:{
+                            },
+                        });       
+                        
+                    $('li').on('tap click',function(){
+                            var id=$(this).attr("id");
+                            cobalt.log(id);
+                            switch(id){
+                              case "events": cobalt.sendEvent("switchFragment",{page:"eventsList"}); break;
+                              case "slides": cobalt.sendEvent("switchFragment",{page:"slideList"}); break;
+                              case "photos": cobalt.sendEvent("switchFragment",{page:"photosList"}); ;break ;
+                              case "videos": cobalt.sendEvent("switchFragment",{page:"videoslist"}); break  ;
+                              
+                              }
+   
+                           return false;
+                        });
+                    });
+                    
+                    
+        </script>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 5 févr. 2014, 11:31:40
+    Author     : juliengambier
+*/
+
+.smartImage{
+	width: 100%;
+	height: 100%;
+}
+.smartImage .smartImageFakeImage{
+	width: 100%;
+	height: 100%;
+	background-position: center center;
+	background-repeat: repeat;
+	background-size: cover;
+
+	opacity:0;
+    -webkit-transition: opacity 1s ease-out;
+    -moz-transition: opacity 1s ease-out;
+    -ms-transition: opacity 1s ease-out;
+    -o-transition: opacity 1s ease-out;
+    transition: opacity 1s ease-out;
+}

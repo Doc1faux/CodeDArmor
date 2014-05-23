@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+        <link rel="stylesheet" href="css/style.css"/>
+        <title>Hello World</title>
+        <script type="text/javascript" src="js/webService.js"></script>
+        <script type="text/javascript" src="js/zepto.js"></script>
+        <script type="text/javascript" src="js/utils.storage.js"></script>
+        <script type="text/javascript" src="js/cobalt.js"></script>
+        <script type="text/javascript" src="handlebars.min.js"></script>
+        <script type="text/javascript" src="js/utils.js"></script>
+        
+            
+    </head>
+    <body>
+        
+        <script id="tpl_listEvents" type="text/x-handlebars-template">
+            
+            
+            <ul>
+            {{#events}}
+            
+            <li  class="eventBlock" index={{@index}} ><img class="imgDesc" src="img/icon_gdg.png" alt="IMG not found"><div><h2>{{title}}</h2><p>{{description}}</p><img src="img/menu.png" alt="fail"></div></li>
+                    
+            {{/events}}
+            </ul>
+            
+            
+        </script>
+        
+        
+                    
+                    
+                    
+                    
+        <div id="eventList">  
+        </div> 
+                    
+                    
+                    
+        <script>
+                    //getInfoGplus();
+                    
+                    
+    var srcTpl=$("#tpl_listEvents").html();
+    var tpl=Handlebars.compile(srcTpl);
+    
+    getEvents(function(){
+        events.reverse();
+        
+              
+        cobalt.storage.setItem('jsonEvents',events,'json');
+        var html=tpl({events : events});  
+        $("#eventList").append(html);
+        var width=$('li:first-child').width();
+        
+        $('li').each(function(){ 
+            var p=$(this).find('p');
+            var limit;
+            switch (width){
+                case 400 : limit=300; break;
+                case 300 : limit=140; break;
+                case 250 : limit=90; break;
+            }
+            if(p.html().length>limit){
+                    p.html( p.html().slice(0,limit)+"...");
+                }
+            
+            
+        });
+
+                        $('li.eventBlock').on('tap click',function(){
+                            var index=$(this).attr("index");
+                            cobalt.log("Pushed : "+index);
+                            cobalt.storage.setItem('eventIndex',index);
+                            cobalt.log("Saved : "+cobalt.storage.getItem('eventIndex','int'));
+                            cobalt.navigate('push','detailedEvents.html','detailedView');
+                            return false;
+                        });
+                    });
+                  
+//                    $('ul').each(function(){ var c=$(this).html(); if (bwidth<500){ $(this).html($(this).html().slice(0,100)+"...") }  })
+                    
+        </script>
+                    
+        <script>
+                    Zepto(function($){
+                                           
+                    cobalt.init({
+                        debug : true,
+                        //debugInBrowser : true,
+                         
+                    
+                    });
+                    
+                    
+                        
+                    });
+                    
+                    
+        </script>
+                    
+                    
+                    
+                    
+                    
+    </body>
+</html>

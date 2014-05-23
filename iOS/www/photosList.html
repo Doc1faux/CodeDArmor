@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+        <link rel="stylesheet" href="css/photosList.css"/>
+        <title>Hello World</title>
+        
+        
+            
+    </head>
+    <body>
+        
+        <script type="text/javascript" src="js/webService.js"></script>
+        <script type="text/javascript" src="js/zepto.js"></script>
+        <!--<script type="text/javascript" src="js/utils.storage.js"></script>-->
+        <script type="text/javascript" src="js/cobalt.js"></script>
+        <script type="text/javascript" src="handlebars.min.js"></script>
+        <script type="text/javascript" src="js/utils.js"></script>
+        <script type="text/javascript" src="js/codedArmor/app.js"></script>
+                <script type="text/javascript" src="js/cobalt.js"></script>
+
+        <script id="tpl_photos" type="text/x-handlebars-template">
+            
+            
+            {{#photos}}
+            
+            
+            <div class="picSlate" src="{{url_s}}" data-id="{{@index}}" style="background-image:url({{url_s}})">
+            
+            </div>
+                    
+                
+            {{/photos}}
+                
+                
+        </script>
+            
+            
+            
+            
+            
+            
+        <div id="PhotoGrid">  
+           
+        </div> 
+            
+            
+            
+        <script>
+            
+            
+                       
+                       
+                       
+                       
+        
+            Zepto(function($){
+                        
+            cobalt.init({                    	
+                        debug : true,
+                        //debugInBrowser:true,
+            events:{
+            
+            "pullToRefresh" : function(event){
+            
+                                        
+            }
+            }
+            });
+            
+            function getPhotos(setId,size){
+            var settings={
+            url:"http://api.flickr.com/services/rest/?&method=flickr.photosets.getPhotos&api_key=" + photoConfig.api_key + "&photoset_id=" + setId+ "&format=json&media=photos&extras=url_"+size,
+            type : 'GET',
+            dataType:'jsonp'};        
+            $.ajax(settings);        
+            }
+            
+            getPhotos(photoConfig.photoset_id,"s");
+             
+                        
+            });
+                  
+            function jsonFlickrApi(data){
+            var photos=data.photoset.photo;
+            // Saving photo list
+//            utils.storage.removeItem("photos");
+//            utils.storage.setItem("photos",photos,"json");            
+            
+             var srcTpl=$("#tpl_photos").html();
+             var tpl=Handlebars.compile(srcTpl);
+             var html=tpl({photos : photos});  
+             $("#PhotoGrid").append(html);
+             html="<div style='clear:both'></div>";
+             $("#PhotoGrid").append(html);
+             
+            
+            cobalt.log("test");
+            app.touch('.picSlate',function(){
+                        var dataId=$(this).data("id");
+                        cobalt.storage.setItem("currentPhoto",dataId,"int");
+                        cobalt.log("test2");
+                        cobalt.navigate('push','photoViewer.html','detailedView');});
+                    return false ;
+       
+            }
+    
+            
+            
+
+        </script>
+                    
+                    
+                    
+                    
+                    
+    </body>
+</html>

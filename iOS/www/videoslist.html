@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="css/videoslist.css"/>
+        
+        <script type="text/javascript" src="js/webService.js"></script>
+        <script type="text/javascript" src="js/zepto.js"></script>
+        <script type="text/javascript" src="js/utils.storage.js"></script>
+        <script type="text/javascript" src="js/cobalt.js"></script>
+        <script type="text/javascript" src="handlebars.min.js"></script>
+        
+    </head>
+    <body>
+        <script id="tpl_videosList" type="text/x-handlebars-template">
+        <ul>
+            {{#videos}}
+            <li class="videoBlock" ><div class="thumbnail" style="background-image:url({{thumbnail}})"><div class="shadow"><h2 class="title">{{title}}</h2><p class="play" data-link={{link}} data-icon="&#xe108;"></p></div></li> 
+            {{/videos}}
+        </ul>
+        
+        </script>
+        
+        <div id="videosList"> 
+            
+            <ul>
+            
+            
+            </ul>
+        </div> 
+        
+        <script>
+       
+    
+    
+    
+    
+    
+    
+    Zepto(function($){
+        
+        cobalt.init({                    	
+            
+           
+            events:{
+                
+                
+                
+                
+            }
+            
+        });    
+        
+        cobalt.log('templating');
+        var srcTpl=$("#tpl_videosList").html();
+        var tpl=Handlebars.compile(srcTpl);
+        getVideos(function(){  
+            var html=tpl({videos : videos});  
+            $("#videosList").append(html);
+            $('p.play').on('tap click',function(){    
+                    var dataLink=$(this).data("link");
+                        cobalt.log(dataLink);
+
+                    cobalt.sendEvent('PlayVideo',{                    
+                    link:dataLink
+                });
+                
+                return false;
+            });
+            
+        });      
+        
+        
+        
+        
+        
+    });
+    
+    
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        
+        <link rel="stylesheet" href="css/slideList.css"/>
+        
+        <script type="text/javascript" src="js/webService.js"></script>
+        <script type="text/javascript" src="js/zepto.js"></script>
+        <script type="text/javascript" src="js/utils.storage.js"></script>
+        <script type="text/javascript" src="js/cobalt.js"></script>
+        <script type="text/javascript" src="handlebars.min.js"></script>
+    </head>
+    <body>
+        <script id="tpl_slidesList" type="text/x-handlebars-template">
+        <ul>
+            {{#slides}}
+            <li class="slideBlock" ><div class="thumbnail" style="background-image:url({{image}})"><div class="shadow"><h2 class="title">{{title}}</h2><p class="play" data-link={{link}} data-icon="&#xe108;"></p></div></li> 
+            {{/slides}}
+        </ul>
+        
+        </script>
+        <div id="slidesList"></div>
+        
+            <script>
+            
+            
+            
+            
+            
+            //Zepto(function($){
+            $( document ).ready(function(){
+            
+            cobalt.init({                    	
+            
+            
+            events:{
+            
+            
+            
+            
+            }
+                
+            });    
+            
+            
+            cobalt.log('templating');
+            var srcTpl=$("#tpl_slidesList").html();
+            var tpl=Handlebars.compile(srcTpl);
+            
+            
+            function getSlides(){
+    
+                $.getJSON('http://erwanhesry.com/CA', function(data){
+                    console.log('ok')
+                });
+
+            /*
+                $.ajax({                 
+                    url:"http://erwanhesry.com/CA",
+                    dataType:"jsonp",   
+                    success:function(data){
+                        console.log("Hello");
+                    }
+                });
+              
+              */
+            };
+            
+
+   
+            getSlides();
+            
+            
+            
+            
+            
+            var myslides;
+            var html=tpl({slides : myslides });  
+            $("#slidesList").append(html);
+            
+            
+            // Setting listeners
+            $('p.read').on('tap click',function(){    
+              
+            return false;
+            });
+                
+                  
+            
+            
+            
+            
+            
+            });
+        
+        
+        </script>
+    </body>
+</html>

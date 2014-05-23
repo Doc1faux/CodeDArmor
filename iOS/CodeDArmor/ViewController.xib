@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController">
+            <connections>
+                <outlet property="view" destination="iN0-l3-epB" id="vIs-Dq-lC9"/>
+                <outlet property="webView" destination="1xh-bY-9H6" id="gUg-NN-e2D"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1xh-bY-9H6">
+                    <rect key="frame" x="0.0" y="49" width="320" height="519"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="XIg-gV-mDY"/>
+                    </connections>
+                </webView>
+                <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FgU-2H-WkE">
+                    <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <items>
+                        <navigationItem title="Code d'Armor" id="9ev-J1-vfp">
+                            <barButtonItem key="leftBarButtonItem" image="SideMenu" id="hjT-gN-Arg">
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="showMenu:" destination="-1" id="J8l-ae-T7F"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="r4X-um-vH0"/>
+                    </connections>
+                </navigationBar>
+            </subviews>
+            <color key="backgroundColor" red="0.29019607843137252" green="0.56470588235294117" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="1xh-bY-9H6" secondAttribute="bottom" id="6aF-BM-QPA"/>
+                <constraint firstItem="FgU-2H-WkE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="22" id="6p0-dG-FOL"/>
+                <constraint firstItem="1xh-bY-9H6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="49" id="MJV-DC-Hro"/>
+                <constraint firstItem="FgU-2H-WkE" firstAttribute="trailing" secondItem="1xh-bY-9H6" secondAttribute="trailing" id="Qvc-ww-NcM"/>
+                <constraint firstAttribute="trailing" secondItem="1xh-bY-9H6" secondAttribute="trailing" id="SzI-gq-KrV"/>
+                <constraint firstItem="1xh-bY-9H6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="WXp-dz-PgM"/>
+                <constraint firstItem="1xh-bY-9H6" firstAttribute="leading" secondItem="FgU-2H-WkE" secondAttribute="leading" id="g0a-Qu-m6I"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="SideMenu" width="44" height="44"/>
+    </resources>
+</document>

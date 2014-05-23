@@ -1,0 +1,108 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24 janv. 2014, 10:29:08
+    Author     : juliengambier
+*/
+
+
+
+html {
+    -webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust:none;
+}
+:hover, :active, :focus{
+    outline: 0;
+    outline: none;
+}
+
+@font-face {
+    font-family: 'RobotoCondensedBold';
+    src: local('Roboto Condensed Bold'), local('RobotoCondensed-Bold'), url('fonts/RobotoCondensedBold.woff') format('woff'), url("fonts/RobotoCondensedBold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'RobotoRegular';
+    src: local('Roboto Regular'), local('Roboto-Regular'), url('fonts/RobotoRegular.woff') format('woff'), url("fonts/RobotoRegular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'RobotoLight';
+    src: local('Roboto Light'), local('Roboto-Light'), url('fonts/RobotoLight.woff') format('woff'), url("fonts/RobotoLight.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Metrize-Icons';
+    src:url('fonts/Metrize-Icons.eot');
+    src:url('fonts/Metrize-Icons.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Metrize-Icons.woff') format('woff'),
+        url('fonts/Metrize-Icons.ttf') format('truetype'),
+        url('fonts/Metrize-Icons.svg#Metrize-Icons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+width: 100%; 
+    margin: 0;
+    
+    
+}
+
+.picSlate{
+    float:left;
+    
+    height: 200px;
+    margin-left:0.5%;
+    margin-top: 0.5%;
+    width:32.655%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    
+}
+@media screen and (max-width: 900px) {
+.picSlate{      
+     height: 180px;   
+}
+}
+@media screen and (max-width: 800px) {
+.picSlate{      
+     height: 160px;   
+}
+}
+@media screen and (max-width: 700px) {
+.picSlate{      
+     height: 140px;   
+}
+}
+@media screen and (max-width: 600px) {
+.picSlate{      
+     height: 120px;   
+}
+}
+@media screen and (max-width: 500px) {
+.picSlate{      
+     height: 100px;   
+}
+}
+
+@media screen and (max-width: 400px) {
+.picSlate{      
+     height: 80px;   
+}
+
+}
+@media screen and (max-width: 300px) {
+.picSlate{      
+     height: 60px;   
+}
+
+}
+

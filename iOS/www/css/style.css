@@ -1,0 +1,208 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 3 déc. 2013, 16:36:27
+    Author     : juliengambier
+*/
+
+@font-face {
+    font-family: 'RobotoCondensedBold';
+    src: local('Roboto Condensed Bold'), local('RobotoCondensed-Bold'), url('fonts/RobotoCondensedBold.woff') format('woff'), url("fonts/RobotoCondensedBold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'RobotoRegular';
+    src: local('Roboto Regular'), local('Roboto-Regular'), url('fonts/RobotoRegular.woff') format('woff'), url("fonts/RobotoRegular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'RobotoLight';
+    src: local('Roboto Light'), local('Roboto-Light'), url('fonts/RobotoLight.woff') format('woff'), url("fonts/RobotoLight.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    text-align: center;
+    height: 100%; 
+    
+}
+
+
+ul li{
+    display:inline-block;
+    margin: 0;
+    padding: 0;
+    
+}
+
+ul{
+  background: #e5e8e3;  
+  margin: 0;
+  padding: 0;
+}
+
+#CobaltContainer{
+    text-align: center;
+    height: 100%; 
+    background: #e5e8e3;   
+}
+
+
+
+.eventBlock{
+     
+     border-width: 2px;
+     margin-left: auto;
+     margin-right: auto;  
+     margin-top:10px;
+     max-width: 400px;
+     background:white;
+     height: 200px;
+     position:relative;
+    
+}
+@media screen and (max-width: 2000px) {
+.eventBlock{  
+     max-width: 400px;   
+     height: 200px;  
+}
+ul li:nth-child(even){
+    margin-left: 7px;
+}
+
+}
+@media screen and (max-width: 830px) {
+.eventBlock{  
+     max-width: 300px;   
+     height: 150px;  
+}
+ul li:nth-child(even){
+    margin-left: 7px;
+}
+
+}
+@media screen and (max-width: 640px) {
+.eventBlock{  
+     max-width: 400px;   
+     height: 200px;   
+}
+ul li:nth-child(even){
+    margin-left: 0px;
+}
+}
+@media screen and (max-width: 420px) {
+.eventBlock{  
+     max-width: 300px;   
+     height: 150px;   
+}
+ul li:nth-child(even){
+    margin-left: 0px;
+}
+
+}
+@media screen and (max-width: 350px) {
+.eventBlock{  
+     max-width: 250px;   
+     height: 125px;    
+}
+ul li:nth-child(even){
+    margin-left: 0px;
+}
+}
+@media screen and (max-width: 250px) {
+.eventBlock{  
+     max-width: 150px;   
+     height: 75px;   
+}
+ul li:nth-child(even){
+    margin-left: 0px;
+}
+ h2{
+    font-size: 10px;    
+}
+    p{
+    font-size: 8px;   
+}
+}
+@media screen and (max-width: 200px) {
+.eventBlock{  
+     max-width: 100px;   
+     height: 50px;   
+}
+
+}
+
+
+.imgDesc{
+    
+    float:left;
+    height: 100%;
+    width: 50%;
+        
+}
+
+.eventBlock div{
+    
+    padding: 5px;
+    height: 90%;
+   
+    overflow: hidden;
+    text-align: left;
+    
+    
+}
+
+.eventBlock div h2{
+    color: #555555;
+    font-family: "RobotoLight";
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 20px;         
+    
+    
+    
+}
+
+.eventBlock div p{
+    color: #555555;
+    font-family: "RobotoLight";
+    margin-top: 10px;
+    overflow: hidden;
+    line-height:15px   ;    
+
+    font-size: 12px;
+    margin-bottom: 0;
+ 
+}
+
+.eventBlock div img{
+    position:absolute;
+    width:20px;   
+    top: 0;
+    right: 0;
+ 
+}
+
+
+#eventList{
+    margin-right: auto;
+    margin-left: auto;
+    
+    width:100%;
+  
+    
+}
+
+

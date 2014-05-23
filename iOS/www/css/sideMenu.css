@@ -1,0 +1,125 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 15 janv. 2014, 14:39:33
+    Author     : juliengambier
+*/
+* {
+    margin: 0;
+    padding: 0;
+}
+#footer{
+    position: absolute;
+    bottom: 0;
+    
+}
+
+#sideMenuContainer{
+    height: 100%;
+    
+}
+
+#sideMenuContainer h2{
+        margin-left:20px; 
+
+    margin-top: 20px;
+    
+    color: #555555;
+    font-family: sans-serif;
+}
+#sideMenuContainer ul{
+    height: 300px;
+    padding-left: 0;
+    color: #555555;
+    
+    
+    font-family: sans-serif;
+}
+#sideMenuContainer ul li{
+    
+    border-width: 1px;
+    height: 75px;
+    list-style: none;
+    color: #555555;
+    font-family: sans-serif;
+}
+#sideMenuContainer ul li:hover{
+    
+    background-color: rgba(0,0,0,0.2);
+    
+}
+#sideMenuContainer ul li div{
+    margin-left:20px; 
+    margin-top: 10px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 55px;
+    width: 55px;
+    float: left
+        
+}
+
+#sideMenuContainer ul li p{
+        margin-top:30px;
+
+    padding-left: 10px;
+    float: left;
+}
+
+@media screen and (max-height: 420px) {
+
+    #logo{
+   
+    display: none;
+    
+}
+
+#sideMenuContainer ul li div{
+    margin-left:20px; 
+    margin-top: 10px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 40px;
+    width: 40px;
+    float: left
+        
+}
+
+#sideMenuContainer ul li p{
+    margin-top:20px;
+    padding-left: 10px;
+    float: left;
+}
+
+
+#sideMenuContainer ul li{
+    
+    border-width: 1px;
+    height: 55px;
+    list-style: none;
+    color: #555555;
+    font-family: sans-serif;
+}
+
+
+}
+#logo{
+   
+    width: 100%;
+    
+}
+
+#logo img{
+    padding-left: 20px;
+    
+    height: 114px;
+    }
+    
+
+    
+
