@@ -13,6 +13,7 @@
 @end
 
 @implementation ViewController
+@synthesize menuIsOpen;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -59,24 +60,20 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    NSLog(@"center will appear");
     menuIsOpen = false;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    NSLog(@"center did appear");
     menuIsOpen = false;
     
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    NSLog(@"center will disappear");
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    NSLog(@"center did disappear");
 }
 @end

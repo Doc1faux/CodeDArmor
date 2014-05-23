@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>0653F158-6E55-4A00-8FDC-EE7781D35EFD</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CodeDArmor</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>0DB96D66-E167-4C17-98E6-8DB6E93044C6</key>
+		<string>https://github.com/cobaltians/CodeDArmor.git</string>
+		<key>FC031D21-E99F-4FA8-B1E7-F44092B5B232</key>
+		<string>https://pluton.haploid.fr/svn/haploid/svn/Externals/HPNativeBridge/iOS/branches/0.2/HPNativeBridge</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>iOS/CodeDArmor.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>0DB96D66-E167-4C17-98E6-8DB6E93044C6</key>
+		<string>../../..</string>
+		<key>FC031D21-E99F-4FA8-B1E7-F44092B5B232</key>
+		<string>../../../../../Downloads/cobalt-0.2.5-dev/sources/iOS/Cobalt</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>FC031D21-E99F-4FA8-B1E7-F44092B5B232</key>
+		<string>https://pluton.haploid.fr/svn/haploid</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/cobaltians/CodeDArmor.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>0DB96D66-E167-4C17-98E6-8DB6E93044C6</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>FC031D21-E99F-4FA8-B1E7-F44092B5B232</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Cobalt</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0DB96D66-E167-4C17-98E6-8DB6E93044C6</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CodeDArmor-github</string>
+		</dict>
+	</array>
+</dict>
+</plist>

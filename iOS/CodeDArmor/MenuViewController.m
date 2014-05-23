@@ -13,7 +13,7 @@
 @end
 
 @implementation MenuViewController
-
+@synthesize menuIsOpen;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -40,8 +40,10 @@
 
 - (BOOL)onUnhandledEvent:(NSString *)event withData:(NSDictionary *)data andCallback:(NSString *)callback
 {
+    
     if ([event isEqualToString:@"switchFragment"]) {
         NSString * page = [NSString stringWithFormat:@"%@",[data objectForKey:kJSPage]];
+        NSLog(@"page = ",page);
         UIViewController * navigationViewController ;
         if ([page isEqualToString:@"eventsList"]) {
             navigationViewController = [CobaltViewController getViewControllerForController:@"default" andPage:@"eventsList.html"];
@@ -64,30 +66,25 @@
 
 - (BOOL)onUnhandledCallback:(NSString *)callback withData:(NSDictionary *)data
 {
-    NSLog(@"callback is : %@",callback);
     return NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
-    NSLog(@"%@ will appear", NSStringFromIIViewDeckSide([self.viewDeckController sideForController:self]));
     menuIsOpen = true;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    NSLog(@"%@ did appear", NSStringFromIIViewDeckSide([self.viewDeckController sideForController:self]));
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    NSLog(@"%@ will disappear", NSStringFromIIViewDeckSide([self.viewDeckController sideForController:self]));
     menuIsOpen = false;
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    NSLog(@"%@ did disappear", NSStringFromIIViewDeckSide([self.viewDeckController sideForController:self]));
 }
 @end

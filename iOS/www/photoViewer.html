@@ -11,58 +11,39 @@ and open the template in the editor.
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
         <link rel="stylesheet" href="css/photoViewer.css"/>
         <title>Hello World</title>
-            
-            
-            
     </head>
     <body>
-        
         <script type="text/javascript" src="js/webService.js"></script>
         <script type="text/javascript" src="js/zepto.js"></script>
         <script type="text/javascript" src="js/utils.storage.js"></script>
-        "<script type="text/javascript" src="js/cobalt.js"></script>
-   
+        <script type="text/javascript" src="js/cobalt.js"></script>
         <script type="text/javascript" src="handlebars.min.js"></script>
         <script type="text/javascript" src="js/codedArmor/app.js"></script>
         <script type="text/javascript" src="js/codedArmor/app.photoViewer.js"></script>
-            
-            
         <div id="Photoviewer" style="background-image:url()"> 
-            
             <div id="left" class="left sideButton"> <p data-icon="&#xe113;"></p></div> 
             <div id="right" class="right sideButton"> <p data-icon="&#xe105;"></p></div> 
             <div style="clear:both"></div>
-            <!--<div id="share" data-icon="&#xe038;"></div>
-             -->
-                
+            <!--<div id="share" data-icon="&#xe038;"></div>-->
         </div> 
-            
-            
-            
-            
-            
         <script>
- 
             Zepto(function($){
-                
                 cobalt.init({                    	
                     debug : true,
                     //debugInBrowser:true,
                     events:{
-                        
                         "pullToRefresh" : function(event){
                             cobalt.log('Refresh');                           
                             cobalt.sendCallback(event);
-                            },
+                        },
                         "share" : function( data, callback ){
                             cobalt.log('share');
                             if (callback){
-                              cobalt.sendCallback(callback, {link:app.photoViewer.urlPhotosList[app.photoViewer.currentPhoto].url_o});
+                                cobalt.sendCallback(callback, {link:app.photoViewer.urlPhotosList[app.photoViewer.currentPhoto].url_o});
                             }
                         }
                     }
                 });
-  
                 function getPhotos(setId,size){            
                     var settings={
                         url:"http://api.flickr.com/services/rest/?&method=flickr.photosets.getPhotos&api_key=" + photoConfig.api_key + "&photoset_id=" + setId+ "&format=json&media=photos&extras=url_"+size,
@@ -70,26 +51,16 @@ and open the template in the editor.
                         dataType:'jsonp'};        
                     $.ajax(settings);        
                 }
-                
                 getPhotos(photoConfig.photoset_id,"o");  
-                
             });
-            
-             function jsonFlickrApi(data){
-                    var photos=data.photoset.photo;
-                    console.log("This is data");
-                    console.log(photos);
-                    app.photoViewer.urlPhotosList=photos;
-                    app.photoViewer.init();    
-                    
-                    
-                }
-     
+
+            function jsonFlickrApi(data){
+                var photos=data.photoset.photo;
+                console.log("This is data");
+                console.log(photos);
+                app.photoViewer.urlPhotosList=photos;
+                app.photoViewer.init();    
+            }
         </script>
-            
-            
-            
-            
-            
     </body>
 </html>

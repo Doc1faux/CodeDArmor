@@ -10,5 +10,5 @@
 #import "CobaltViewController.h"
 #import "ViewController.h"
 @interface MenuViewController : CobaltViewController <CobaltDelegate>
-
+@property bool menuIsOpen;
 @end

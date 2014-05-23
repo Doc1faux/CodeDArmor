@@ -8,13 +8,10 @@ and open the template in the editor.
     <head>
         <title>TODO supply a title</title>
         <link rel="stylesheet" href="css/detailedView.css"/>
-        
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
     </head>
-    
     <body>
-        
         <script type="text/javascript" src="js/webService.js"></script>
         <script type="text/javascript" src="js/utils.storage.js"></script>
         <script type="text/javascript" src="js/zepto.js"></script>
@@ -23,132 +20,92 @@ and open the template in the editor.
         <script type="text/javascript" src="js/utils.format.date.js"></script>
         <script type="text/javascript" src="js/codedArmor/app.js"></script>
         <script id="tpl_detailedEvent" type="text/x-handlebars-template">
-            
-            
-            
             {{#event}}  
             <div id="imageBackground" style="background-image:url(img/event.png)"></div>
             <div id="DetailedViewContainer">
-            
-            <div id="CobaltDetailedEventHeader">
-            
-            <img src="img/icon_gdg.png" alt="GDG_image"/>
-            <div id="headerTitles">
-            <h2>{{title}}</h2>
-            <br>
-            {{#if isOver}}          
-            <h3  id="CobaltDetailedEventRegister">Inscriptions terminées </h3>
-            
-            {{else}}          
-            <h3  data-url={{url}} id="CobaltDetailedEventRegister">Inscrivez vous !</h3>
-            <br>
-            <br>
-            //<p id="share" data-title="{{title}}"  data-url={{url}}  data-icon="&#xe038;"></p>
-            {{/if}}            
-            
-            </div>
-            
-            <div style="clear:both;"></div>           
-            
-            </div>    
-            <div id="ContentContainer">
-            <p>
-            {{description}}
-            </p>
-            
-            </div>
-            
-            
-            
-            
+                <div id="CobaltDetailedEventHeader">
+                    <img src="img/icon_gdg.png" alt="GDG_image"/>
+                    <div id="headerTitles">
+                        <h2>{{title}}</h2>
+                        <br>
+                        {{#if isOver}}          
+                        <h3  id="CobaltDetailedEventRegister">Inscriptions terminées </h3>
+                        {{else}}          
+                        <h3  data-url={{url}} id="CobaltDetailedEventRegister">Inscrivez vous !</h3>
+                        <br>
+                        <br>
+                        {{/if}}            
+                    </div>
+                    <div style="clear:both;"></div>           
+                </div>    
+                <div id="ContentContainer">
+                    <p>{{description}}</p>
+                </div>
             </div>           
-            
             {{/event}}
         </script>
-        
-        
-        <!--        <div id="detail"></div>-->
-        
-        
-        
-        
-        
         <script>
             
             Zepto(function($){
-                  var link=$(this).data("url");
-                  var title=$(this).data("title");
-            cobalt.init({                    	
-                        debug : true,
-                         //debugInBrowser : true,
-                        
-                        events:{
-                            "share" : function( data, callback ){
-                                cobalt.log('share');
-                                if (callback){
-                                    cobalt.sendCallback(callback, {link:eventsList[index].gPlusEventLink,title:eventsList[index].title});
-                                }
+                cobalt.init({                    	
+                    debug : true,
+                    //debugInBrowser : true,
+                    events:{
+                        "share" : function( data, callback ){
+                            cobalt.log('share');
+                            if (callback){
+                                cobalt.sendCallback(callback, {link:eventsList[index].gPlusEventLink,title:eventsList[index].title});
                             }
                         }
-                    
-            });
-                  
-            
-                  
-            var eventsList=cobalt.storage.getItem('jsonEvents','json');
-            var index= cobalt.storage.getItem('eventIndex','int');
-            cobalt.log("index=", index);
-            cobalt.log("eventsList=", eventsList);
-            cobalt.log(eventsList[index].temporalRelation);
-            currentEvent=eventsList[index];
-            
-            if(currentEvent.temporalRelation==="past"){
-            currentEvent.isOver=true;
-            }else{
-            currentEvent.isOver=false;
-            
-            
-            }
-            
-            utils.formatting.date.enable();
-            
-            var date=new Date(currentEvent.start);
-            var formatDate=date.format("mmyyyy");              
-            var url="http://codedarmor"+formatDate+".eventbrite.fr";
-            
-            currentEvent.url=url;
-            
-            cobalt.log("index"+index);
-            var srcTpl=$("#tpl_detailedEvent").html();
-            var tpl=Handlebars.compile(srcTpl);
-            currentEvent.description=escapeHTML(currentEvent.description);               
-            var html=tpl({event : currentEvent});  
-            $("body").append(html);
-                    
-            if(currentEvent.isOver===false){
-                app.touch('#CobaltDetailedEventRegister',function(){
-                    var link=$(this).data("url");
-                    cobalt.sendEvent("register",{link:link});
-                    return false;
+                    }
+
+                });
+                var eventsList=cobalt.storage.getItem('jsonEvents','json');
+                var index= cobalt.storage.getItem('eventIndex','int');
+                cobalt.log("index=", index);
+                cobalt.log("eventsList=", eventsList);
+                cobalt.log(eventsList[index].temporalRelation);
+                currentEvent=eventsList[index];
+
+                if(currentEvent.temporalRelation==="past"){
+                    currentEvent.isOver=true;
+                }else{
+                    currentEvent.isOver=false;
+                }
+
+                utils.formatting.date.enable();
+
+                var date=new Date(currentEvent.start);
+                var formatDate=date.format("mmyyyy");              
+                var url="http://codedarmor"+formatDate+".eventbrite.fr";
+
+                currentEvent.url=url;
+
+                cobalt.log("index"+index);
+                var srcTpl=$("#tpl_detailedEvent").html();
+                var tpl=Handlebars.compile(srcTpl);
+                currentEvent.description=escapeHTML(currentEvent.description);               
+                var html=tpl({event : currentEvent});  
+                $("body").append(html);
+
+                if(currentEvent.isOver===false){
+                    app.touch('#CobaltDetailedEventRegister',function(){
+                        var link=$(this).data("url");
+                        cobalt.sendEvent("register",{link:link});
+                        return false;
                     });
-                app.touch('#share',function(){
-                    var link=$(this).data("url");
-                    var title=$(this).data("title");
-                    cobalt.sendEvent("share",{link:link,title:title});
-                    return false;
+                    app.touch('#share',function(){
+                        var link=$(this).data("url");
+                        var title=$(this).data("title");
+                        cobalt.sendEvent("share",{link:link,title:title});
+                        return false;
                     });
-            }
-            
-            
-            
+                }
             });
-            
+
             function escapeHTML(text){
-            return new Handlebars.SafeString(Handlebars.compile("{{& text}}")({text:text}).replace(/\r?\n/g, "<br/>"));
+                return new Handlebars.SafeString(Handlebars.compile("{{& text}}")({text:text}).replace(/\r?\n/g, "<br/>"));
             }
         </script>
-        
     </body>
-    
-    
 </html>

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "67A4430918649B3400F5C301"
-               BuildableName = "Code d&apos;Armor.app"
+               BuildableName = "CodeDArmor.app"
                BlueprintName = "CodeDArmor"
                ReferencedContainer = "container:CodeDArmor.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "67A4432D18649B3400F5C301"
-               BuildableName = "Code d&apos;ArmorTests.xctest"
+               BuildableName = "CodeDArmorTests.xctest"
                BlueprintName = "CodeDArmorTests"
                ReferencedContainer = "container:CodeDArmor.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "67A4430918649B3400F5C301"
-            BuildableName = "Code d&apos;Armor.app"
+            BuildableName = "CodeDArmor.app"
             BlueprintName = "CodeDArmor"
             ReferencedContainer = "container:CodeDArmor.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "67A4430918649B3400F5C301"
-            BuildableName = "Code d&apos;Armor.app"
+            BuildableName = "CodeDArmor.app"
             BlueprintName = "CodeDArmor"
             ReferencedContainer = "container:CodeDArmor.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "67A4430918649B3400F5C301"
-            BuildableName = "Code d&apos;Armor.app"
+            BuildableName = "CodeDArmor.app"
             BlueprintName = "CodeDArmor"
             ReferencedContainer = "container:CodeDArmor.xcodeproj">
          </BuildableReference>
@@ -91,6 +91,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "CodeDArmor"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

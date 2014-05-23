@@ -10,6 +10,6 @@
 #import "CobaltViewController.h"
 @interface ViewController : CobaltViewController <CobaltDelegate>
 
-@property (weak, nonatomic) IBOutlet UIWebView *mWebView;
 - (IBAction)showMenu:(id)sender;
+@property bool menuIsOpen;
 @end
