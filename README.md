@@ -1,6 +1,8 @@
 CodeDArmor
 ==========
 
-Code D'Armor
+**Warning** : This app is using an old version of Cobalt and has not been finished. **Don't** use it a sample. :)
 
-For used the iOS version you need the ViewDeck library. You can find it at the following address : https://github.com/Inferis/ViewDeck
+
+this app need this lib.
+https://github.com/Inferis/ViewDeck
